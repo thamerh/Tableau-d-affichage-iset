@@ -25,11 +25,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `etudiants`
 --
+CREATE TABLE `etudiants` (
+  `CIN` int(8) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `refresh_token` text DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `num-inscrit` int(8) FOREIGN KEY REFERENCES CarteEtudiant(PersonID) ; 
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+--
+-- Table structure for table `admin`
+--
+CREATE TABLE `admin` (
+  `CIN` int(8) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
@@ -37,8 +50,6 @@ CREATE TABLE `users` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
 --
 -- Indexes for dumped tables
 --
