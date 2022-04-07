@@ -30,9 +30,10 @@ const Login = () => {
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
                             <form onSubmit={Auth} className="box">
+                                <h1 className="has-text-centered  has-text-success has-text-weight-bold">Login</h1>
                                 <p className="has-text-centered">{msg}</p>
                                 <div className="field mt-5">
-                                    <label className="label">Email or Username</label>
+                                    <label className="label">Email </label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
@@ -46,8 +47,8 @@ const Login = () => {
                                 <div className="field mt-5">
                                     <button className="button is-success is-fullwidth">Login</button>
                                 </div>
-                                <div className="field mt-5">
-                                    <Link to="/register">Don't have an account?</Link>
+                                <div className="field mt-5 has-text-centered ">
+                                    <Link to="/register" className=" has-text-success">Don't have an account?</Link>
                                 </div>
                             </form>
                         </div>

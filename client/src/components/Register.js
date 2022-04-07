@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from 'react-router-dom';
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -34,6 +34,7 @@ const Register = () => {
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
                             <form onSubmit={Register} className="box">
+                            <h1 className="has-text-centered  has-text-success has-text-weight-bold">Register</h1>
                                 <p className="has-text-centered">{msg}</p>
                                 <div className="field mt-5">
                                     <label className="label">Name</label>
@@ -62,6 +63,10 @@ const Register = () => {
                                 </div>
                                 <div className="field mt-5">
                                     <button className="button is-success is-fullwidth">Register</button>
+                                </div>
+                                
+                                <div className="field mt-5 has-text-centered ">
+                                    <Link to="/" className=" has-text-success">you have an account?</Link>
                                 </div>
                                
                             </form>
