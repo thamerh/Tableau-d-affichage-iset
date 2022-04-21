@@ -10,7 +10,10 @@ const Etudiants = db.define('etudiants',{
     email:{
         type: DataTypes.STRING
     },
-    numinscrit:{
+    num_insc:{
+        type: DataTypes.NUMBER
+    },
+    cin:{
         type: DataTypes.STRING
     },
     password:{
