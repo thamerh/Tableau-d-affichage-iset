@@ -1,100 +1,47 @@
--- phpMyAdmin SQL Dump
--- version 4.9.0.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Nov 02, 2021 at 09:39 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
 
+   /*Generation Time*/
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
+--
+-- Database: `data_base_project`
+--
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+-- --------------------------------------------------------
 
 --
--- Database: `auth_db`
+-- Table structure for table `carte_etudiant`
 --
+
+CREATE TABLE carte_etudiant(
+   num_insc INT,
+   cin VARCHAR(50),
+   classe VARCHAR(50),
+   PRIMARY KEY(num_insc, cin)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `etudiants`
 --
-CREATE TABLE `etudiants` (
-  `id` int(8) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `numinscrit` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `refresh_token` text DEFAULT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
-  `num-inscrit` int(8)  ; 
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Table structure for table `admin`
---
-CREATE TABLE `admin` (
-  `CIN` int(8) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `refresh_token` text DEFAULT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `users`
---
-ALTER TABLE `etudiants`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `etudiants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-/*carte etudiant table*/
-CREATE TABLE `CarteEtudiant` (
-  `id` int(11) NOT NULL,
-   `numinscrit` varchar(255) DEFAULT NULL
+CREATE TABLE `etudiants`(
+   id VARCHAR(50),
+   name VARCHAR(50),
+   email VARCHAR(50),
+   num_insc INT NOT NULL,
+   cin VARCHAR(50) NOT NULL,
+   password VARCHAR(255),
+   refresh_token VARCHAR(255),
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   PRIMARY KEY(id),
+   FOREIGN KEY(num_insc, cin) REFERENCES carte_etudiant(num_insc, cin)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
--
--- Indexes for table `users`
+-- AUTO_INCREMENT for table `etudiants`
 --
-ALTER TABLE `CarteEtudiant`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `CarteEtudiant`
+ALTER TABLE `etudiants`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
-   
