@@ -126,3 +126,29 @@ COMMIT;
 ALTER TABLE `chef_departement`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE admin(
+   id VARCHAR(50),
+   name VARCHAR(50),
+   email VARCHAR(50),
+   password VARCHAR(255),
+   refresh_token VARCHAR(255),
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   cin VARCHAR(50) NOT NULL,
+   code_previlege VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id),
+   FOREIGN KEY(cin, code_previlege) REFERENCES previlege(cin, code_previlege)
+);
+
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
