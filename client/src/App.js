@@ -3,20 +3,27 @@ import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
+import LoginEtu from "./components/Etudiants/Login";
+import NavbarEtu from "./components/Etudiants/Navbar";
+import DashboardEtu from "./components/Etudiants/Dashboard";
+import RegisterEtu from "./components/Etudiants/Register";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Login/>
+        <Dashboard/>
+        </Route>
+        <Route exact path="/login">
+        <LoginEtu/>
         </Route>
         <Route path="/register">
-          <Register/>
+        <RegisterEtu/>
         </Route>
         <Route path="/dashboard">
-          <Navbar/>
-          <Dashboard/>
+        <NavbarEtu/>
+        <DashboardEtu/>
         </Route>
       </Switch>
     </BrowserRouter>
