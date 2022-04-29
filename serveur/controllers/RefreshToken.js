@@ -51,7 +51,7 @@ export const refreshTokenChef = async(req, res) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 export const refreshTokenAdmin = async(req, res) => {
     try {
