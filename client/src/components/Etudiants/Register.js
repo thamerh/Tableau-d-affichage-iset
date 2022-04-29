@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import { useHistory,Link } from 'react-router-dom';
+
 const RegisterEtu = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -25,75 +26,84 @@ const RegisterEtu = () => {
             history.push("/");
         } catch (error) {
             if (error.response) {
-                alert(error.response.data.msg)
-               // setMsg(error.response.data.msg);
+                alert(error.response.data.msg);
             }
         }
     }
 
     return (
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
-            <div className="hero-body">
-                <div className="container">
-                    <div className="columns is-centered">
+        <div style={ HeaderStyle }>
+        <section className=" is-fullheight is-fullwidth" >
+
+                <div className="container height">
+                    <div className="columns is-centered ">
                         <div className="column is-4-desktop">
                             <form onSubmit={RegisterEtu} className="box">
-                            <h1 className="has-text-centered  has-text-success has-text-weight-bold">Register</h1>
-                                <p className="has-text-centered">{msg}</p>
-                                <div className="field mt-5">
+                            <h1 className="has-text-centered  google-font">Register</h1>
+                              
+                                <div className="field ">
                                     <label className="label">Name</label>
-                                    <div className="controls">
-                                        <input type="text" className="input" placeholder="Name"
+                                    
+                                        <input type="text" className="input is-rounded" placeholder="Name"
                                             value={name} onChange={(e) => setName(e.target.value)} />
-                                    </div>
+                                    
                                 </div>
-                                <div className="field mt-5">
+                                <div className="field ">
                                     <label className="label">Email</label>
-                                    <div className="controls">
-                                        <input type="text" className="input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                                    </div>
+                                
+                                        <input type="text" className="input is-rounded" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                
                                 </div>
-                                <div className="field mt-5">
+                                <div className="field">
                                     <label className="label">Numero d'insecrit:</label>
-                                    <div className="controls">
-                                        <input type="text" className="input" placeholder="Numero d'insecrit"
+                                    
+                                        <input type="text" className="input is-rounded" placeholder="Numero d'insecrit"
                                             value={num_insc} onChange={(e) => setNum_insc(e.target.value)} />
-                                    </div>
+                                    
                                 </div>
-                                <div className="field mt-5">
+                                <div className="field ">
                                     <label className="label">CIN:</label>
                                     <div className="controls">
-                                        <input type="text" className="input" placeholder="CIN"
+                                        <input type="text" className="input is-rounded" placeholder="CIN"
                                             value={cin} onChange={(e) => setCin(e.target.value)} />
                                     </div>
                                 </div>
-                                <div className="field mt-5">
+                                <div className="field ">
                                     <label className="label">Password</label>
                                     <div className="controls">
-                                        <input type="password" className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                        <input type="password" className="input is-rounded" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
                                     </div>
                                 </div>
-                                <div className="field mt-5">
+                                <div className="field ">
                                     <label className="label">Confirm Password</label>
                                     <div className="controls">
-                                        <input type="password" className="input" placeholder="******" value={confPassword} onChange={(e) => setConfPassword(e.target.value)} />
+                                        <input type="password" className="input is-rounded" placeholder="******" value={confPassword} onChange={(e) => setConfPassword(e.target.value)} />
                                     </div>
                                 </div>
-                                <div className="field mt-5">
-                                    <button className="button is-success is-fullwidth">Register</button>
+                                <div className="field ">
+                                    <button className="button is-info is-rounded is-fullwidth">Register</button>
                                 </div>
                                 
                                 <div className="field mt-5 has-text-centered ">
-                                    <Link to="/" className=" has-text-success">you have an account?</Link>
+                                    <Link to="/loginEtu" className="has-text-grey ">you have an account?</Link>
                                 </div>
                                
                             </form>
                         </div>
                     </div>
                 </div>
-            </div>
+         
         </section>
+        </div>
     )
 }
 
 export default RegisterEtu
+const HeaderStyle = {
+    width: "100%",
+    height: "100%",
+    background: `url("https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover"
+}
