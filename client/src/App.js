@@ -1,32 +1,65 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
-import Login from "./components/Login";
-import Navbar from "./components/Navbar";
-import Register from "./components/Register";
-import LoginEtu from "./components/Etudiants/Login";
-import NavbarEtu from "./components/Etudiants/Navbar";
+import {LandingPage} from "./components/LandingPage.js";
+import {LoginEtu }from "./components/Etudiants/Login";
+import NavbarEtu from "./components/Etudiants/NavBar";
 import DashboardEtu from "./components/Etudiants/Dashboard";
 import RegisterEtu from "./components/Etudiants/Register";
+
+import {LoginChef }from "./components/Chef-Department/Login";
+import NavbarChef from "./components/Chef-Department/NavBar";
+import DashboardChef from "./components/Chef-Department/Dashboard";
+import RegisterChef from "./components/Chef-Department/Register";
+
+import {LoginAdmin }from "./components/Admin/Login";
+import NavbarAdmin from "./components/Admin/NavBar";
+import DashboardAdmin from "./components/Admin/Dashboard";
+import RegisterAdmin from "./components/Admin/Register";
+import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-        <Dashboard/>
+        <LandingPage/>
+
         </Route>
-        <Route exact path="/login">
+        <Route  path="/loginEtu">
         <LoginEtu/>
         </Route>
-        <Route path="/register">
+        <Route path="/registerEtu">
         <RegisterEtu/>
         </Route>
-        <Route path="/dashboard">
+        <Route path="/dashboardEtu">
         <NavbarEtu/>
         <DashboardEtu/>
         </Route>
+
+        <Route  path="/loginChef">
+        <LoginChef/>
+        </Route>
+        <Route path="/registerChef">
+        <RegisterChef/>
+        </Route>
+        <Route path="/dashboardChef">
+        <NavbarChef/>
+        <DashboardChef/>
+        </Route>
+
+        <Route  path="/loginAdmin">
+        <LoginAdmin/>
+        </Route>
+        <Route path="/registerAdmin">
+        <RegisterAdmin/>
+        </Route>
+        <Route path="/dashboardAdmin">   
+        <NavbarAdmin/>
+        <DashboardAdmin/>
+        </Route>
       </Switch>
+
     </BrowserRouter>
+    
   );
 }
 
