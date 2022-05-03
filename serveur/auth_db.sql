@@ -152,3 +152,24 @@ CREATE TABLE admin(
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+
+
+--
+-- Table structure for table `etudiants`
+--
+CREATE TABLE affiches(
+   id VARCHAR(50),
+   image VARCHAR(500),
+   title VARCHAR(50) NOT NULL,
+   description VARCHAR(500) NOT NULL,
+   published BOOLEAN,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+--
+-- AUTO_INCREMENT for table `affiche`
+--
+ALTER TABLE `affiches`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
