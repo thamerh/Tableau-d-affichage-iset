@@ -12,14 +12,20 @@ import path from "path";
 // 1. create affiche
 
 export const addAffiche = async (req, res) => {
-
+   
     try {
-        await Affiche.create({       
-       image:req.file.path,
-       title:req.body.title,
-       description:req.body.description
-        });
-        res.json({msg: "Affiche created"});
+        let info = {
+            image: req.file.path,
+            title: req.body.title,
+            price: req.body.price,
+            description: req.body.description,
+            published: req.body.published ? req.body.published : false
+        }
+    
+        const affiche = await Affiche.create(info);
+        res.status(200).send(affiche);
+        console.log(affiche);
+    
     } catch (error){
         console.log(error);
         return res.status(404).json({msg: "problem"});
@@ -35,14 +41,16 @@ export const addAffiche = async (req, res) => {
 
 // 2. get all affiches
 
-export const getAllAffiches = async (req, res) => {
+export const getAllAff = async ( req, res) => {
 
-    let affiches = await Affiche.findAll({})
-    res.status(200).send(affiches)
+    let affiche = await Affiche.findAll({})
+    res.status(200).send(affiche)
+    console.log(affiche)
+
 
 }
 
-// 3. get single product
+// 3. get single Affiche
 
 export const getOneAffiche = async (req, res) => {
 
@@ -81,9 +89,9 @@ export const deleteAffiche = async (req, res) => {
 
 export const getPublishedAffiche = async (req, res) => {
 
-    const affiches =  await Affiche.findAll({ where: { published: true }})
+    const affiche =  await Affiche.findAll({ where: { published: true }})
 
-    res.status(200).send(affiches)
+    res.status(200).send(affiche)
 
 }
 
@@ -110,7 +118,7 @@ export const getPublishedAffiche = async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'Images')
+        cb(null, './Images')
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname))
@@ -125,12 +133,12 @@ export const upload = multer({
         const mimeType = fileTypes.test(file.mimetype)  
         const extname = fileTypes.test(path.extname(file.originalname))
 
-        if(mimeType && extname) {
+        if( mimeType && extname) {
             return cb(null, true)
         }
         cb('Give proper files formate to upload')
     }
-}).single('image');
+}).single('image')
 
 
 
