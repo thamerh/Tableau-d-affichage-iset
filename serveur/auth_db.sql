@@ -128,6 +128,16 @@ ALTER TABLE `chef_departement`
 COMMIT;
 
 --
+-- Table structure for table `previlege`
+--
+
+CREATE TABLE previlege(
+   cin VARCHAR(50) NOT NULL,
+   code_previlege VARCHAR(50) NOT NULL,
+  
+   PRIMARY KEY(cin,code_previlege)
+);
+--
 -- Table structure for table `admin`
 --
 
@@ -167,6 +177,9 @@ CREATE TABLE affiches(
    updatedAt DATETIME NOT NULL,
    PRIMARY KEY(id)
 );
+
+
+
 --
 -- AUTO_INCREMENT for table `affiche`
 --
