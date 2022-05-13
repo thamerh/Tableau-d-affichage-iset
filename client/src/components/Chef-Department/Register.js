@@ -1,29 +1,38 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import { useHistory,Link } from 'react-router-dom';
+import './Chef-style.css';
 
-const RegisterEtu = () => {
+const RegisterChef = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [num_insc, setNum_insc] = useState('');
+    const [code_dautorisation, setCode_dautorisation] = useState('');
     const [cin, setCin] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
     const [msg, setMsg] = useState('');
     const history = useHistory();
+    const [dep, setDep] = useState("");
+
+    function onChangeValue(event) {
+      setDep(event.target.value);
+      console.log(event.target.value);
+      alert((event.target.value));
+    }
 
     const RegisterEtu = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/RegisterEtu', {
+            await axios.post('http://localhost:5000/RegisterChef', {
                 name: name,
                 email: email,
-                num_insc: num_insc,
+                code_dautorisation: code_dautorisation,
                 cin: cin,
+                nom_dep:dep,
                 password: password,
                 confPassword: confPassword
             });
-            history.push("/");
+            history.push("/LoginChef");
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.msg);
@@ -55,10 +64,10 @@ const RegisterEtu = () => {
                                 
                                 </div>
                                 <div className="field">
-                                    <label className="label">Numero d'insecrit:</label>
+                                    <label className="label">Code d'Authorization:</label>
                                     
                                         <input type="text" className="input is-rounded" placeholder="Numero d'insecrit"
-                                            value={num_insc} onChange={(e) => setNum_insc(e.target.value)} />
+                                            value={code_dautorisation} onChange={(e) => setCode_dautorisation(e.target.value)} />
                                     
                                 </div>
                                 <div className="field ">
@@ -67,6 +76,13 @@ const RegisterEtu = () => {
                                         <input type="text" className="input is-rounded" placeholder="CIN"
                                             value={cin} onChange={(e) => setCin(e.target.value)} />
                                     </div>
+                                </div>
+                                <div onChange={onChangeValue}>
+                               <span className="radio-style">  <input type="radio" value="TI" name="dep" checked={dep === "TI"} /> TI</span>
+                               <span className="radio-style"> <input type="radio" value="GM" name="dep" checked={dep === "GM"} /> GM</span>
+                               <span className="radio-style"> <input type="radio" value="GE" name="dep" checked={dep === "GE"} /> GE</span>
+                               <span className="radio-style"> <input type="radio" value="GP" name="dep" checked={dep === "GP"} /> GP</span>
+                               <span className="radio-style"> <input type="radio" value="AA" name="dep" checked={dep === "AA"} /> AA</span>  
                                 </div>
                                 <div className="field ">
                                     <label className="label">Password</label>
@@ -85,7 +101,7 @@ const RegisterEtu = () => {
                                 </div>
                                 
                                 <div className="field mt-5 has-text-centered ">
-                                    <Link to="/loginEtu" className="has-text-grey ">you have an account?</Link>
+                                    <Link to="/loginChef" className="has-text-grey ">you have an account?</Link>
                                 </div>
                                
                             </form>
@@ -98,7 +114,7 @@ const RegisterEtu = () => {
     )
 }
 
-export default RegisterEtu
+export default RegisterChef
 const HeaderStyle = {
     width: "100%",
     height: "100%",

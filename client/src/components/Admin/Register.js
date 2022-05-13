@@ -2,26 +2,27 @@ import React, { useState } from 'react'
 import axios from "axios";
 import { useHistory,Link } from 'react-router-dom';
 
-const RegisterEtu = () => {
+const RegisterAdmin= () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [num_insc, setNum_insc] = useState('');
     const [cin, setCin] = useState('');
+    const [code_previlege, setCode_previlege] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
     const [msg, setMsg] = useState('');
     const history = useHistory();
 
-    const RegisterEtu = async (e) => {
+    const RegisterAdmin= async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/RegisterEtu', {
+            await axios.post('http://localhost:5000/RegisterAdmin', {
                 name: name,
                 email: email,
-                num_insc: num_insc,
                 cin: cin,
+                code_previlege: code_previlege,
                 password: password,
                 confPassword: confPassword
+                
             });
             history.push("/");
         } catch (error) {
@@ -38,7 +39,7 @@ const RegisterEtu = () => {
                 <div className="container height">
                     <div className="columns is-centered ">
                         <div className="column is-4-desktop">
-                            <form onSubmit={RegisterEtu} className="box">
+                            <form onSubmit={RegisterAdmin} className="box">
                             <h1 className="has-text-centered  google-font">Register</h1>
                               
                                 <div className="field ">
@@ -55,10 +56,10 @@ const RegisterEtu = () => {
                                 
                                 </div>
                                 <div className="field">
-                                    <label className="label">Numero d'insecrit:</label>
+                                    <label className="label">Code Privilege:</label>
                                     
                                         <input type="text" className="input is-rounded" placeholder="Numero d'insecrit"
-                                            value={num_insc} onChange={(e) => setNum_insc(e.target.value)} />
+                                            value={code_previlege} onChange={(e) => setCode_previlege(e.target.value)} />
                                     
                                 </div>
                                 <div className="field ">
@@ -85,7 +86,7 @@ const RegisterEtu = () => {
                                 </div>
                                 
                                 <div className="field mt-5 has-text-centered ">
-                                    <Link to="/loginEtu" className="has-text-grey ">you have an account?</Link>
+                                    <Link to="/loginAdmin" className="has-text-grey ">you have an account?</Link>
                                 </div>
                                
                             </form>
@@ -98,7 +99,7 @@ const RegisterEtu = () => {
     )
 }
 
-export default RegisterEtu
+export default RegisterAdmin
 const HeaderStyle = {
     width: "100%",
     height: "100%",

@@ -4,7 +4,7 @@ import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
 
-const DashboardEtu = () => {
+const DashboardChef = () => {
     const [name, setName] = useState('');
     const [token, setToken] = useState('');
     const [expire, setExpire] = useState('');
@@ -18,14 +18,14 @@ const DashboardEtu = () => {
 
     const refreshToken = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/tokenEtu');
+            const response = await axios.get('http://localhost:5000/tokenChef');
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
             setName(decoded.name);
             setExpire(decoded.exp);
         } catch (error) {
             if (error.response) {
-                history.push("/loginEtu");
+                history.push("/loginChef");
             }
         }
     }
@@ -35,7 +35,7 @@ const DashboardEtu = () => {
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
         if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:5000/tokenEtu');
+            const response = await axios.get('http://localhost:5000/tokenChef');
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
@@ -64,4 +64,4 @@ const DashboardEtu = () => {
     )
 }
 
-export default DashboardEtu
+export default DashboardChef

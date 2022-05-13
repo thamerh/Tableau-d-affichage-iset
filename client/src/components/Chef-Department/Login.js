@@ -4,7 +4,7 @@ import '../../App.css'
 import { useHistory,Link } from 'react-router-dom';
 import {Footer} from "../LandingPage";
 
-export const LoginEtu = () => {
+export const LoginChef = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [msg, setMsg] = useState('');
@@ -13,11 +13,11 @@ export const LoginEtu = () => {
     const Auth = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/LoginEtu', {
+            await axios.post('http://localhost:5000/LoginChef', {
                 email: email,
                 password: password
             });
-            history.push("/dashboardEtu");
+            history.push("/dashboardChef");
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.msg);
@@ -51,7 +51,7 @@ export const LoginEtu = () => {
                                     <button className="button is-info is-rounded is-fullwidth">Login</button>
                                 </div>
                                 <div className="field mt-5 has-text-centered ">
-                                <Link to="/registerEtu" className="has-text-grey">Don't have an account?</Link> <br/>
+                                <Link to="/registerChef" className="has-text-grey">Don't have an account?</Link> <br/>
                                 <Link to="/" className="has-text-grey">Back to Homepage</Link>
                                 </div>
                                 
