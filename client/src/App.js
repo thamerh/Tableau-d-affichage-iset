@@ -15,6 +15,10 @@ import NavbarAdmin from "./components/Admin/NavBar";
 import DashboardAdmin from "./components/Admin/Dashboard";
 import RegisterAdmin from "./components/Admin/Register";
 import './App.css';
+import AddAffiche from './screens/AddAffiche'
+import EditAffiche from './screens/EditAffiche'
+import {AfficheDetail} from './screens/AfficheDetail'
+import ShowAffiches from './screens/ShowAffiches'
 
 function App() {
   return (
@@ -33,6 +37,7 @@ function App() {
         <Route path="/dashboardEtu">
         <NavbarEtu/>
         <DashboardEtu/>
+        
         </Route>
 
         <Route  path="/loginChef">
@@ -56,6 +61,14 @@ function App() {
         <NavbarAdmin/>
         <DashboardAdmin/>
         </Route>
+        <Route exact path='/addAffiche' >
+          <AddAffiche/>
+       </Route>
+        <Route exact path='/Affiches' >
+        <ShowAffiches/>
+       </Route>
+       <Route exact path='/Affiche/edit/:id'> <EditAffiche/></Route>
+       <Route exact path='/Affiche/:id'><AfficheDetail/></Route>
       </Switch>
 
     </BrowserRouter>
