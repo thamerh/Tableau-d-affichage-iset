@@ -18,7 +18,7 @@ try {
 }
 
 //static Images Folder
-app.use('./Images', express.static('./Images'));
+app.use('/Images', express.static('./Images'));
 app.use(cors({ credentials:true, origin:'http://localhost:3000' }));
 app.use(cookieParser());
 app.use(express.json());
