@@ -9,7 +9,7 @@ const AfficheCard = ({ affiche }) => {
       
         <>
 
-            <Card className='shadow-lg m-3 p-3 rounded' style={{ width: '18rem' }}>
+            <Card className='shadow-lg m-3 p-3 rounded' style={{ width: '25rem' }}>
                 <Card.Img src ={` http://localhost:5000/${affiche.image}` } style={{ height: '18rem' }}/>
                 <Card.Body>
                     <Card.Title>Title: {affiche.title}</Card.Title>
