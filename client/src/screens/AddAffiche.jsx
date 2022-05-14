@@ -23,7 +23,7 @@ const AddAffiche = () => {
             formData.append('published', published)
 
             await axios.post('http://localhost:5000/addAffiche', formData)
-            history.push('http://localhost:3000/Affiches');
+            history.push('/Affiches');
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.msg);

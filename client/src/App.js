@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import {LandingPage} from "./components/LandingPage.js";
 import {LoginEtu }from "./components/Etudiants/Login";
-import NavbarEtu from "./components/Etudiants/Navbar";
+import NavbarEtu from "./components/Etudiants/NavBar";
 import DashboardEtu from "./components/Etudiants/Dashboard";
 import RegisterEtu from "./components/Etudiants/Register";
 
