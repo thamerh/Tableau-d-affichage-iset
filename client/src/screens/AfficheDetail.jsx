@@ -45,19 +45,17 @@ export const AfficheDetail = () => {
 
   
 
-
-
-    
-
+   
     return (
         <div style={HeaderStyle}>
+
 
         <Container className="mt-10 p-4">
         <h1 className="text-center text-white p-2 border-bottom border-white ">Detail Affiche</h1>
         <Row>
             <Col  className="d-flex justify-content-center" >
                 <Card className='shadow-lg m-3 p-4 rounded '>
-                        <Card.Img src={`http://localhost:3000/${AfficheImage}`} style={{height: '25rem' ,width: '25rem'  }} fluid />
+                        <Card.Img src={`http://localhost:5000/${AfficheImage}`} style={{height: '25rem' ,width: '25rem'  }} fluid />
                         <Card.Body>
                             <Card.Title>Title: {title}</Card.Title>
                            
@@ -88,6 +86,7 @@ export const AfficheDetail = () => {
  const HeaderStyle = {
     width: "100%",
     height: "100%",
+    minHeight: "757px",
     background: `url("https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
