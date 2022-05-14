@@ -24,5 +24,8 @@ router.delete('/LogoutAdmin', LogoutAdmin);
 router.post('/addAffiche' , upload , addAffiche);
 router.get('/allAffiches', getAllAffiches );
 router.get('/published', getPublishedAffiche);
+router.get('/:id',getOneAffiche)
+router.put('/:id', updateAffiche)
+router.delete('/:id', deleteAffiche)
 
 export default router;

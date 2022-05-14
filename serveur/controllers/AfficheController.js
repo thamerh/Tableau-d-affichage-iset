@@ -41,7 +41,7 @@ export const addAffiche = async (req, res) => {
 
 // 2. get all affiches
 
-export const getAllAff = async ( req, res) => {
+export const getAllAffiches = async ( req, res) => {
 
     let affiche = await Affiche.findAll({})
     res.status(200).send(affiche)
