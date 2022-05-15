@@ -1,6 +1,7 @@
 import Admin from "../models/AdminModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Carte from "../models/CarteModel.js";
 
 
 
@@ -80,3 +81,21 @@ export const LogoutAdmin = async(req, res) => {
     res.clearCookie('refreshToken');
     return res.sendStatus(200);
 }
+
+export const AddCarteEtu = async(req, res) => {
+    const { cin,num_insc,lib_class} = req.body;
+    try {
+        await Carte.create({       
+            cin:cin, 
+            num_insc: num_insc,
+            lib_class: lib_class
+        });
+        res.json({msg: "Carte etudiant adding secessuful"});
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({msg: "etudiant alredy exist"});
+
+    } 
+}
+
+
