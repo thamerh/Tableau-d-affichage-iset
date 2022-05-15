@@ -93,6 +93,8 @@ CREATE TABLE carte_etudiant(
    cin VARCHAR(50),
    num_insc VARCHAR(50),
    lib_class VARCHAR(50) NOT NULL,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
    PRIMARY KEY(cin, num_insc),
    FOREIGN KEY(lib_class) REFERENCES classe(lib_class)
 );
