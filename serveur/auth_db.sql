@@ -140,7 +140,8 @@ COMMIT;
 CREATE TABLE previlege(
    cin VARCHAR(50) NOT NULL,
    code_previlege VARCHAR(50) NOT NULL,
-  
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
    PRIMARY KEY(cin,code_previlege)
 );
 --
