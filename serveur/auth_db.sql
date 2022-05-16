@@ -24,7 +24,11 @@ CREATE TABLE departement(
 CREATE TABLE donnes_dotorisation(
    cin VARCHAR(50),
    code_dautorisation VARCHAR(50),
+   -- nom_dep VARCHAR(50) NOT NULL,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
    PRIMARY KEY(cin, code_dautorisation)
+   -- FOREIGN KEY(nom_dep) REFERENCES departement(nom_dep)
 );
 --
 -- Table structure for table `classe`
