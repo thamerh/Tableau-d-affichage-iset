@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Carte from "../models/CarteModel.js";
 import Authorization from "../models/AuthorizationModel.js"
+import AuthorizationAdmin from "../models/AuthorizationAdminModel.js"
 
 
 
@@ -107,6 +108,22 @@ export const AddChefAutorization = async(req, res) => {
             code_dautorisation: code_dautorisation
         });
         res.json({msg: "information chef adding secessuful"});
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({msg: "Chef alredy exist"});
+
+    } 
+}
+
+export const AddAdminAutorization = async(req, res) => {
+    const { cin,code_previlege} = req.body;
+    try {
+        await AuthorizationAdmin.create({       
+            cin:cin, 
+            code_previlege: code_previlege
+
+        });
+        res.json({msg: "information Admin adding secessufuly"});
     } catch (error) {
         console.log(error);
         return res.status(404).json({msg: "Chef alredy exist"});
