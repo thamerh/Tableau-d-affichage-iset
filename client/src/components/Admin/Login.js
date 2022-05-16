@@ -38,7 +38,7 @@ export const LoginAdmin = () => {
                                 <div className="field mt-5">
                                     <label className="label">Email </label>
                                     <div className="controls">
-                                        <input type="text" className="input is-rounded" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                        <input type="text" className="input is-rounded" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="field mt-5">

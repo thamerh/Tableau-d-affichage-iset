@@ -7,6 +7,9 @@ import router from "./routes/index.js";
 dotenv.config();
 const app = express();
 
+
+app.use(express.urlencoded({ extended: true }));
+
 try {
     await db.authenticate();
     console.log('Database Connected...');
@@ -14,6 +17,8 @@ try {
     console.error(error);
 }
 
+//static Images Folder
+app.use('/Images', express.static('./Images'));
 app.use(cors({ credentials:true, origin:'http://localhost:3000' }));
 app.use(cookieParser());
 app.use(express.json());

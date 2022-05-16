@@ -24,7 +24,7 @@ const RegisterAdmin= () => {
                 confPassword: confPassword
                 
             });
-            history.push("/");
+            history.push("/loginAdmin");
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.msg);

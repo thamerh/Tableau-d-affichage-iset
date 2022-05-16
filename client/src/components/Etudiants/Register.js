@@ -23,7 +23,7 @@ const RegisterEtu = () => {
                 password: password,
                 confPassword: confPassword
             });
-            history.push("/");
+            history.push("/loginEtu");
         } catch (error) {
             if (error.response) {
                 alert(error.response.data.msg);

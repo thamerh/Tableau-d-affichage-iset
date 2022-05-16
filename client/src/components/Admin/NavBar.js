@@ -32,6 +32,12 @@ const NavbarAdmin = () => {
                             Home
                         </a>
                     </div>
+                    <div className="navbar-start">
+                        <a href="/addAffiche" className="navbar-item">
+                            AddAffiche
+                        </a>
+                    </div>
+               
 
                     <div className="navbar-end">
                         <div className="navbar-item">

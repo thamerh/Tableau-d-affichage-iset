@@ -1,6 +1,9 @@
 import Admin from "../models/AdminModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Carte from "../models/CarteModel.js";
+import Authorization from "../models/AuthorizationModel.js"
+import AuthorizationAdmin from "../models/AuthorizationAdminModel.js"
 
 
 
@@ -80,3 +83,52 @@ export const LogoutAdmin = async(req, res) => {
     res.clearCookie('refreshToken');
     return res.sendStatus(200);
 }
+
+export const AddCarteEtu = async(req, res) => {
+    const { cin,num_insc,lib_class} = req.body;
+    try {
+        await Carte.create({       
+            cin:cin, 
+            num_insc: num_insc,
+            lib_class: lib_class
+        });
+        res.json({msg: "Carte etudiant adding secessuful"});
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({msg: "etudiant alredy exist"});
+
+    } 
+}
+
+export const AddChefAutorization = async(req, res) => {
+    const { cin,code_dautorisation} = req.body;
+    try {
+        await Authorization.create({       
+            cin:cin, 
+            code_dautorisation: code_dautorisation
+        });
+        res.json({msg: "information chef adding secessuful"});
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({msg: "Chef alredy exist"});
+
+    } 
+}
+
+export const AddAdminAutorization = async(req, res) => {
+    const { cin,code_previlege} = req.body;
+    try {
+        await AuthorizationAdmin.create({       
+            cin:cin, 
+            code_previlege: code_previlege
+
+        });
+        res.json({msg: "information Admin adding secessufuly"});
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({msg: "Chef alredy exist"});
+
+    } 
+}
+
+
