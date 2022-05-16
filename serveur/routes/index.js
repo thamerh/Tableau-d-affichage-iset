@@ -1,7 +1,7 @@
 import express from "express";
 import { RegisterEtu,LoginEtu,LogoutEtu } from "../controllers/Etudiants.js";
 import { RegisterChef,LoginChef,LogoutChef } from "../controllers/ChefDep.js";
-import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization  } from "../controllers/Admin.js";
+import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization,AddAdminAutorization} from "../controllers/Admin.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshTokenChef, refreshTokenEtu, refreshTokenAdmin} from "../controllers/RefreshToken.js";
 import { addAffiche,getAllAffiches,getOneAffiche,updateAffiche,deleteAffiche,getPublishedAffiche,upload} from "../controllers/AfficheController.js";
@@ -29,5 +29,6 @@ router.put('/:id', updateAffiche);
 router.delete('/:id', deleteAffiche);
 router.post('/AddCarteEtu', AddCarteEtu);
 router.post('/AddChefAutorization', AddChefAutorization );
+router.post('/AddAdminAutorization', AddAdminAutorization );
 
 export default router;
