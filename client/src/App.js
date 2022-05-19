@@ -19,7 +19,9 @@ import AddAffiche from './screens/AddAffiche'
 import EditAffiche from './screens/EditAffiche'
 import {AfficheDetail} from './screens/AfficheDetail'
 import ShowAffiches from './screens/ShowAffiches'
-
+import {AddAnotherAdmin} from './screens/AddCodeAdmin'
+import {AddChef} from './screens/AddCodeChef'
+import {AddEtuCard} from './screens/AddCodeEtu'
 function App() {
   return (
     <BrowserRouter>
@@ -62,10 +64,19 @@ function App() {
         <DashboardAdmin/>
         </Route>
         <Route exact path='/addAffiche' >
-          <AddAffiche/>
+        <AddAffiche/>
        </Route>
         <Route exact path='/Affiches' >
         <ShowAffiches/>
+       </Route>
+       <Route exact path='/AddAdmin' >
+        <AddAnotherAdmin/>
+       </Route>
+       <Route exact path='/AddChef' >
+        <AddChef/>
+       </Route>
+       <Route exact path='/AddStudentCard' >
+        <AddEtuCard/>
        </Route>
        <Route exact path='/Affiche/edit/:id'> <EditAffiche/></Route>
        <Route exact path='/Affiche/:id'><AfficheDetail/></Route>
