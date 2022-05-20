@@ -31,6 +31,10 @@ export  const AddChef = () => {
                 <div className="container">
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
+                         <div className='border-bottom border-white'>
+                           <h1  className="text-center text-white FontFamily">Add Chef Department</h1>
+                           <a href='/dashboardAdmin'><img src='https://static.thenounproject.com/png/2739572-200.png' alt='tttt' className='ImgIconAdmin'/></a>
+                         </div>
                             <form onSubmit={Auth} className="box">
                                 <h1 className="has-text-centered google-font">Add Authorization For New Chef Department</h1>
                                 <div className="field mt-5">
