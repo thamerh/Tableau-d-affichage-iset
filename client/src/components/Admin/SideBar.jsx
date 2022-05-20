@@ -78,6 +78,7 @@ const Sidebar = () => {
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
+            <CDBSidebarMenuItem >Welcome  {name}</CDBSidebarMenuItem>
             <NavLink exact to="/Affiches" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="columns">Affich</CDBSidebarMenuItem>
             </NavLink>
