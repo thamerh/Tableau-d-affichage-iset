@@ -14,16 +14,17 @@ import DashboardChef from "./components/Chef-Department/Dashboard";
 import RegisterChef from "./components/Chef-Department/Register";
 
 import {LoginAdmin }from "./components/Admin/Login";
-import NavbarAdmin from "./components/Admin/NavBar";
+// import NavbarAdmin from "./components/Admin/NavBar";
 import DashboardAdmin from "./components/Admin/Dashboard";
 import RegisterAdmin from "./components/Admin/Register";
-import AddAffiche from './screens/AddAffiche'
+// import AddAffiche from './screens/AddAffiche'
 import EditAffiche from './screens/EditAffiche'
 import {AfficheDetail} from './screens/AfficheDetail'
-import ShowAffiches from './screens/ShowAffiches'
-import {AddAnotherAdmin} from './screens/AddCodeAdmin'
-import {AddChef} from './screens/AddCodeChef'
-import {AddEtuCard} from './screens/AddCodeEtu'
+// import ShowAffiches from './screens/ShowAffiches'
+// import {AddAnotherAdmin} from './screens/AddCodeAdmin'
+// import {AddChef} from './screens/AddCodeChef'
+// import {AddEtuCard} from './screens/AddCodeEtu'
+import Routes from './screens/Routes';
 
 function App() {
   return (
@@ -64,10 +65,9 @@ function App() {
       <RegisterAdmin/>
       </Route>
       <Route path="/dashboardAdmin">   
-      <Sidebar />
-      <DashboardAdmin/>
+      <Routes/>
       </Route>
-      <Route exact path='/addAffiche' >
+      {/* <Route exact path='/addAffiche' >
       <AddAffiche/>
      </Route>
       <Route exact path='/Affiches' >
@@ -81,7 +81,7 @@ function App() {
      </Route>
      <Route exact path='/AddStudentCard' >
       <AddEtuCard/>
-     </Route>
+     </Route> */}
      <Route exact path='/Affiche/edit/:id'> <EditAffiche/></Route>
      <Route exact path='/Affiche/:id'><AfficheDetail/></Route>
     </Switch>
