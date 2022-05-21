@@ -18,8 +18,8 @@ import {LoginAdmin }from "./components/Admin/Login";
 import DashboardAdmin from "./components/Admin/Dashboard";
 import RegisterAdmin from "./components/Admin/Register";
 // import AddAffiche from './screens/AddAffiche'
-import EditAffiche from './screens/EditAffiche'
-import {AfficheDetail} from './screens/AfficheDetail'
+// import EditAffiche from './screens/EditAffiche'
+// import {AfficheDetail} from './screens/AfficheDetail'
 // import ShowAffiches from './screens/ShowAffiches'
 // import {AddAnotherAdmin} from './screens/AddCodeAdmin'
 // import {AddChef} from './screens/AddCodeChef'
@@ -82,8 +82,8 @@ function App() {
      <Route exact path='/AddStudentCard' >
       <AddEtuCard/>
      </Route> */}
-     <Route exact path='/Affiche/edit/:id'> <EditAffiche/></Route>
-     <Route exact path='/Affiche/:id'><AfficheDetail/></Route>
+     {/* <Route exact path='/Affiche/edit/:id'> <EditAffiche/></Route>
+     <Route exact path='/Affiche/:id'><AfficheDetail/></Route> */}
     </Switch>
 
   </BrowserRouter>
