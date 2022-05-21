@@ -5,6 +5,7 @@ import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization,A
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshTokenChef, refreshTokenEtu, refreshTokenAdmin} from "../controllers/RefreshToken.js";
 import { addAffiche,getAllAffiches,getOneAffiche,updateAffiche,deleteAffiche,getPublishedAffiche,upload} from "../controllers/AfficheController.js";
+import {addAfficheChef, uploadChef,getAllAffichesChef,getOneAfficheChef,updateAfficheChef,deleteAfficheChef } from "../controllers/ChefAffich.js"
 
 
 const router = express.Router();
@@ -30,5 +31,10 @@ router.delete('/:id', deleteAffiche);
 router.post('/AddCarteEtu', AddCarteEtu);
 router.post('/AddChefAutorization', AddChefAutorization );
 router.post('/AddAdminAutorization', AddAdminAutorization );
+router.post('/addAfficheChef' , uploadChef, addAfficheChef);
+router.post('/allAffichesChef', getAllAffichesChef );
+router.get('AffichChef/:id',getOneAfficheChef);
+router.put('AffichChef/:id', updateAfficheChef);
+router.delete('AffichChef/:id', deleteAfficheChef);
 
 export default router;
