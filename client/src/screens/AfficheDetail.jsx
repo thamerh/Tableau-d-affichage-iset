@@ -40,7 +40,7 @@ export const AfficheDetail = () => {
     // handling Delete
     const handleDelete = async (id) => {
         await axios.delete(`http://localhost:5000/${id}`)
-        history.push('/Affiches')
+        history.push('/dashboardAdmin')
     }
 
   

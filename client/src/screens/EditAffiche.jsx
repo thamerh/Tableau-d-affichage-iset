@@ -78,7 +78,7 @@ const EditProduct = () => {
 
         await axios.put(`http://localhost:5000/${id}`, data)
 
-        history.push('/Affiches')
+        history.push('/dashboardAdmin')
 
    }
 
