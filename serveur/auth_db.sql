@@ -172,7 +172,7 @@ COMMIT;
 
 
 --
--- Table structure for table `etudiants`
+-- Table structure for table `affiches` Admin
 --
 CREATE TABLE affiches(
    id VARCHAR(50),
@@ -191,5 +191,27 @@ CREATE TABLE affiches(
 -- AUTO_INCREMENT for table `affiche`
 --
 ALTER TABLE `affiches`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+
+--
+-- Table structure for table `affichesChef` 
+--
+CREATE TABLE affichesChef(
+   id VARCHAR(50),
+   image VARCHAR(500),
+   title VARCHAR(50) NOT NULL,
+   description VARCHAR(500) NOT NULL,
+   pertain VARCHAR(50) NOT NULL,
+   department VARCHAR(50) NOT NULL,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+--
+-- AUTO_INCREMENT for table `affichesChef` 
+--
+ALTER TABLE `affichesChef`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
