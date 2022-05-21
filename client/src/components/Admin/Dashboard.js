@@ -15,6 +15,7 @@ import { Pie, Bar } from "react-chartjs-2";
 import Sidebar from "./SideBar";
 import Navbar from "./NavBar";
 import "./Dashboard.css";
+import ShowAffiche from '../../screens/ShowAffiches'
 
 export const  DashboardAdmin= () => {
     const [name, setName] = useState('');
@@ -134,8 +135,8 @@ export const  DashboardAdmin= () => {
       </div>
       <div style={{flex:"1 1 auto", display:"flex", flexFlow:"column", height:"100vh", overflowY:"hidden"}}>
         <Navbar/>
-        <div style={{height:"100%"}}>
-	       
+        <div style={{height:"100%"}} className="overflow-auto">
+        <ShowAffiche/>
         </div>
       </div>
     </div>
