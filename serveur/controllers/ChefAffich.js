@@ -1,7 +1,8 @@
 import AfficheChef from "../models/AfficheChefModel.js";
+import Chef from "../models/ChefDepModel.js";
 // image Upload
-import multer  from 'multer';
-import path from "path";
+import multer from 'multer';
+import path from "path" ;
 
 
 
@@ -18,7 +19,7 @@ export const addAfficheChef = async (req, res) => {
             title: req.body.title,
             description: req.body.description,
             department: req.body.department,
-            classe: req.body.classe,
+            classe: req.body.classe
 
         }
     
@@ -39,12 +40,19 @@ export const addAfficheChef = async (req, res) => {
 
 export const getAllAffichesChef = async ( req, res) => {
 
-    let affiche = await AfficheChef.findAll({  where: {
-     //condition
-      }})
-    res.status(200).send(affiche)
-    console.log(affiche)
+    try {
 
+        let nom_dep = req.body.nom_dep;
+        let affiche = await AfficheChef.findAll({ where: { department:  nom_dep }})
+          res.status(200).send(affiche)
+          console.log(affiche)
+          return res.status(200).json({msg: affiche});
+   
+    } catch (error){
+        console.log(error);
+        return res.status(404).json({msg: "problem"});
+
+    } 
 
 }
 
@@ -94,7 +102,7 @@ const storage = multer.diskStorage({
     }
 })
 
-export const upload = multer({
+export const uploadChef = multer({
     storage: storage,
     limits: { fileSize: '1000000' },
     fileFilter: (req, file, cb) => {
