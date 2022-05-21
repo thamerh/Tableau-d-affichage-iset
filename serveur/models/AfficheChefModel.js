@@ -16,9 +16,6 @@ const { DataTypes } = Sequelize;
         description: {
             type: DataTypes.TEXT
         },
-        pertain: {
-            type: DataTypes.STRING
-        },
         department: {
             type: DataTypes.STRING
         },

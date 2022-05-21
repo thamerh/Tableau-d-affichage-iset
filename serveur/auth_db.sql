@@ -203,7 +203,6 @@ CREATE TABLE affichesChef(
    image VARCHAR(500),
    title VARCHAR(50) NOT NULL,
    description VARCHAR(500) NOT NULL,
-   pertain VARCHAR(50) NOT NULL,
    department VARCHAR(50) NOT NULL,
    classe VARCHAR(50) NOT NULL,
    createdAt DATETIME NOT NULL,
