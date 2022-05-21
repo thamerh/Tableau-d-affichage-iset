@@ -7,6 +7,8 @@ import {AddAnotherAdmin} from './AddCodeAdmin'
 import {AddChef} from './AddCodeChef'
 import {AddEtuCard} from './AddCodeEtu'
 import AddAffiche from './AddAffiche'
+import EditAffiche from './EditAffiche'
+import {AfficheDetail} from './AfficheDetail'
 
 const Routes = () => {
 
@@ -19,6 +21,8 @@ const Routes = () => {
         <Route path="/AddAdmin" component={AddAnotherAdmin} />
         <Route path="/AddChef" component={AddChef} />
         <Route path="/AddStudentCard" component={AddEtuCard} />
+        <Route exact path='/Affiche/edit/:id'> <EditAffiche/></Route>
+        <Route exact path='/Affiche/:id'><AfficheDetail/></Route>
       </BrowserRouter>
     </Fragment>
   );
