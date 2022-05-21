@@ -205,6 +205,7 @@ CREATE TABLE affichesChef(
    description VARCHAR(500) NOT NULL,
    pertain VARCHAR(50) NOT NULL,
    department VARCHAR(50) NOT NULL,
+   classe VARCHAR(50) NOT NULL,
    createdAt DATETIME NOT NULL,
    updatedAt DATETIME NOT NULL,
    PRIMARY KEY(id)
