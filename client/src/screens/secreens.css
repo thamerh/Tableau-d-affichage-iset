@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Grape+Nuts&display=swap');
+.ImgIconAdmin{
+    background-color: azure;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: -18px;
+    left: -30px;
+}
+.FontFamily{
+    position: relative;
+    top: 18px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 25px;
+
+
+}

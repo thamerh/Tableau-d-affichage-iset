@@ -40,7 +40,7 @@ export const AfficheDetail = () => {
     // handling Delete
     const handleDelete = async (id) => {
         await axios.delete(`http://localhost:5000/${id}`)
-        history.push('/Affiches')
+        history.push('/dashboardAdmin')
     }
 
   
@@ -51,7 +51,10 @@ export const AfficheDetail = () => {
 
 
         <Container className="mt-10 p-4">
-        <h1 className="text-center text-white p-2 border-bottom border-white ">Detail Affiche</h1>
+        <div className='border-bottom border-white'>
+                <h1  className="text-center text-white FontFamily">Affich Detail</h1>
+                <a href='/dashboardAdmin'><img src='https://static.thenounproject.com/png/2739572-200.png' alt='tttt' className='ImgIconAdmin'/></a>
+             </div>
         <Row>
             <Col  className="d-flex justify-content-center" >
                 <Card className='shadow-lg m-3 p-4 rounded '>

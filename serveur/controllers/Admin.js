@@ -123,7 +123,7 @@ export const AddAdminAutorization = async(req, res) => {
             code_previlege: code_previlege
 
         });
-        res.json({msg: "information Admin adding secessufuly"});
+        return res.json({msg: "information Admin adding secessufuly"});
     } catch (error) {
         console.log(error);
         return res.status(404).json({msg: "Chef alredy exist"});

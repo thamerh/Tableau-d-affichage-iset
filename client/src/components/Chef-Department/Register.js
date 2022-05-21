@@ -17,7 +17,7 @@ const RegisterChef = () => {
     function onChangeValue(event) {
       setDep(event.target.value);
       console.log(event.target.value);
-      alert((event.target.value));
+      //alert((event.target.value));
     }
 
     const RegisterEtu = async (e) => {

@@ -78,7 +78,7 @@ const EditProduct = () => {
 
         await axios.put(`http://localhost:5000/${id}`, data)
 
-        history.push('/Affiches')
+        history.push('/dashboardAdmin')
 
    }
 
@@ -86,9 +86,10 @@ const EditProduct = () => {
         <div style={HeaderStyle} className='row'>
          
             <Container className='mt-5 p-2 '  >
-                <h1 className="text-center text-white p-2 border-bottom border-white ">Edit Affiche</h1>
-           
-
+            <div className='border-bottom border-white'>
+                <h1  className="text-center text-white FontFamily">Edit Affiche</h1>
+                <a href='/dashboardAdmin'><img src='https://static.thenounproject.com/png/2739572-200.png' alt='tttt' className='ImgIconAdmin'/></a>
+             </div>
                 <Form onSubmit={updateHandler} className='w-100 p-3 col-md-6'>
                     <Form.Group className="mb-3" controlId="title">
                         <Form.Label>Title</Form.Label>
