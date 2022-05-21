@@ -22,7 +22,9 @@ const { DataTypes } = Sequelize;
         classe: {
             type: DataTypes.STRING
         }
-       
-        });
+       },{
+
+           tableName: 'affichesChef'
+       });
 
  export default  AfficheChef;
