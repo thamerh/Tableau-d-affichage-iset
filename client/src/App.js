@@ -14,16 +14,10 @@ import DashboardChef from "./components/Chef-Department/Dashboard";
 import RegisterChef from "./components/Chef-Department/Register";
 
 import {LoginAdmin }from "./components/Admin/Login";
-// import NavbarAdmin from "./components/Admin/NavBar";
 import DashboardAdmin from "./components/Admin/Dashboard";
 import RegisterAdmin from "./components/Admin/Register";
-// import AddAffiche from './screens/AddAffiche'
-// import EditAffiche from './screens/EditAffiche'
-// import {AfficheDetail} from './screens/AfficheDetail'
-// import ShowAffiches from './screens/ShowAffiches'
-// import {AddAnotherAdmin} from './screens/AddCodeAdmin'
-// import {AddChef} from './screens/AddCodeChef'
-// import {AddEtuCard} from './screens/AddCodeEtu'
+import AddAffiche from './screens/Chef-dep/AddAffiche'
+
 import Routes from './screens/Routes';
 
 function App() {
@@ -67,10 +61,10 @@ function App() {
       <Route path="/dashboardAdmin">   
       <Routes/>
       </Route>
-      {/* <Route exact path='/addAffiche' >
+      <Route exact path='/addAffichechef' >
       <AddAffiche/>
      </Route>
-      <Route exact path='/Affiches' >
+      {/* <Route exact path='/Afficheschef' >
       <ShowAffiches/>
      </Route>
      <Route exact path='/AddAdmin' >
