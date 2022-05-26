@@ -1,6 +1,6 @@
 import express from "express";
 import { RegisterEtu,LoginEtu,LogoutEtu } from "../controllers/Etudiants.js";
-import { RegisterChef,LoginChef,LogoutChef } from "../controllers/ChefDep.js";
+import { RegisterChef,LoginChef,LogoutChef,getNomDep } from "../controllers/ChefDep.js";
 import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization,AddAdminAutorization} from "../controllers/Admin.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshTokenChef, refreshTokenEtu, refreshTokenAdmin} from "../controllers/RefreshToken.js";
@@ -33,8 +33,9 @@ router.post('/AddChefAutorization', AddChefAutorization );
 router.post('/AddAdminAutorization', AddAdminAutorization );
 router.post('/addAfficheChef' , uploadChef, addAfficheChef);
 router.post('/allAffichesChef', getAllAffichesChef );
-router.get('AffichChef/:id',getOneAfficheChef);
-router.put('AffichChef/:id', updateAfficheChef);
-router.delete('AffichChef/:id', deleteAfficheChef);
+router.get('/AffichChef/:id',getOneAfficheChef);
+router.put('/AffichChef/:id', updateAfficheChef);
+router.delete('/AffichChef/:id', deleteAfficheChef);
+router.get('/getNomDep/:name',getNomDep);
 
 export default router;
