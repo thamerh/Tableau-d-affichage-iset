@@ -91,6 +91,7 @@ export const getNomDep = async(req, res)=>{
         },
         attributes: ["nom_dep"]
     });
-    res.status(200).send(dep);
+    //console.log(dep[0].dataValues.nom_dep);
+    res.status(200).send({dep:dep[0].dataValues.nom_dep});
 
 }
