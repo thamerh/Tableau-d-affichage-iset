@@ -42,11 +42,11 @@ export const getAllAffichesChef = async ( req, res) => {
 
     try {
 
-        let nom_dep = req.body.nom_dep;
-        let affiche = await AfficheChef.findAll({ where: { department:  nom_dep }})
+        let nom_dep = req.params.nom_dep;
+        let affiche = await AfficheChef.findAll({ where: { department:nom_dep }})
           res.status(200).send(affiche)
           console.log(affiche)
-          return res.status(200).json({msg: affiche});
+        //   return res.status(200).json({affiche});
    
     } catch (error){
         console.log(error);

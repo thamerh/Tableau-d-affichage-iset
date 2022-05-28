@@ -17,7 +17,7 @@ import {LoginAdmin }from "./components/Admin/Login";
 import DashboardAdmin from "./components/Admin/Dashboard";
 import RegisterAdmin from "./components/Admin/Register";
 import AddAffiche from './screens/Chef-dep/AddAffiche'
-
+import ShowAffiche from './screens/Chef-dep/ShowAffiches'
 import Routes from './screens/Routes';
 
 function App() {
@@ -63,6 +63,9 @@ function App() {
       </Route>
       <Route exact path='/addAffichechef' >
       <AddAffiche/>
+     </Route>
+     <Route exact path='/Afficheschef' >
+      <ShowAffiche/>
      </Route>
       {/* <Route exact path='/Afficheschef' >
       <ShowAffiches/>

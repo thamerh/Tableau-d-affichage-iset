@@ -4,31 +4,92 @@ import {Container,Button, Row, Col} from 'react-bootstrap'
 import AfficheCard from '../../components/AffichChefCard';
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
-import './secreens.css';
+import '../secreens.css';
 
 const ShowAffiche = () => {
     const history = useHistory();
     const [Affiche, setAffiche] = useState([])
+    const [name, setName] = useState('');
+    const [token, setToken] = useState('');
+    const [expire, setExpire] = useState('');
+    const [nom_dep,setNomDep] = useState('');
+
+    
+
 
     useEffect(() => {
-        const getAfficheData = async () => {
-            const { data } = await axios.post('http://localhost:5000//allAffichesChef')
-            console.log(data)
-            setAffiche(data)
+        refreshToken();
+      }, []);
+      useEffect(() => {
+        getNomDepByNameChef(name) ;
+      }, [name]);
+    useEffect(() => {
+        getAfficheData(nom_dep);
+   
+    },[nom_dep])
+    const refreshToken = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/tokenChef');
+            setToken(response.data.accessToken);
+            const decoded = jwt_decode(response.data.accessToken);
+            setName(decoded.name);
+            setExpire(decoded.exp);
+            
+        } catch (error) {
+            if (error.response) {
+                history.push("/LoginChef");
+            }
         }
+       
+    }
     
-        getAfficheData()
-    },[])
+    const axiosJWT = axios.create();
 
+    axiosJWT.interceptors.request.use(async (config) => {
+        const currentDate = new Date();
+        if (expire * 1000 < currentDate.getTime()) {
+            const response = await axios.get('http://localhost:5000/tokenChef');
+            config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+            setToken(response.data.accessToken);
+            const decoded = jwt_decode(response.data.accessToken);
+            setName(decoded.name);
+            setExpire(decoded.exp);
+           
+        }
+        return config;
+    }, (error) => {
+        return Promise.reject(error);
+    });
+
+
+
+
+
+const getNomDepByNameChef = async (name) => {
+
+      
+                await axios.get(`http://localhost:5000/getNomDep/${name}`).then((response)=>{
+                   
+                    setNomDep(response.data.dep)
+                 
+                })
+  
+               
+            }
+const getAfficheData = async (nom_dep) => {
+                const { data } = await axios.get(`http://localhost:5000/allAffichesChef/${nom_dep}`)                
+
+                window.localStorage.setItem('Aff',JSON.stringify(data));
+               setAffiche(JSON.parse(window.localStorage.getItem(('Aff'))))
+                
+            }
     return (
         <div >
            <Container  className="justify-content-center p-2">
-               {/* <div className='   border-bottom border-white'>
-               <h1 className='text-center text-white FontFamily'>Show All Affiche</h1>
-               <a href='dashboardAdmin'><img src='https://static.thenounproject.com/png/2739572-200.png' alt='tttt' className='ImgIconAdmin'/></a>
-               </div> */}
-
+              
                <Row >
+
+
                     {
                         Affiche.map(affiche => {
                             return <Col md={6} lg={4} sm={12} key={affiche.id} >
@@ -36,6 +97,7 @@ const ShowAffiche = () => {
                             </Col>
                         })
                     }
+                    
                </Row>
 
 

@@ -32,7 +32,7 @@ router.post('/AddCarteEtu', AddCarteEtu);
 router.post('/AddChefAutorization', AddChefAutorization );
 router.post('/AddAdminAutorization', AddAdminAutorization );
 router.post('/addAfficheChef' , uploadChef, addAfficheChef);
-router.post('/allAffichesChef', getAllAffichesChef );
+router.get('/allAffichesChef/:nom_dep', getAllAffichesChef );
 router.get('/AffichChef/:id',getOneAfficheChef);
 router.put('/AffichChef/:id', updateAfficheChef);
 router.delete('/AffichChef/:id', deleteAfficheChef);
