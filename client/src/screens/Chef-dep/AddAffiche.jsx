@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect,useLayoutEffect } from 'react'
 import { Container, Form, Button } from 'react-bootstrap';
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
@@ -9,12 +9,22 @@ const AddAffiche = () => {
     const [name, setName] = useState('');
     const [token, setToken] = useState('');
     const [expire, setExpire] = useState('');
+    const [nom_dep, setNomDep] = useState('');
+    
+
     const history = useHistory();
 
+
+  
     useEffect(() => {
         refreshToken();
+       
+      }, []);
+      useEffect(() => {
 
-    }, []);
+        getNomDepByNameChef(name) ;
+      }, [name]);
+
 
     const refreshToken = async () => {
         try {
@@ -49,51 +59,40 @@ const AddAffiche = () => {
     }, (error) => {
         return Promise.reject(error);
     });
-alert(name);
 
 
 
 
 
-//    function getNomDep(){
-//             if(name){
-//                 const dep = await axios.get(`http://localhost:5000/getNomDep/${name}`)
-//                 alert(dep.nom_dep);
-//             }else alert("probleme")
-//    }
-//    getNomDep(name);
-    //     const getNomDepByNameChef = async () => {
+const getNomDepByNameChef = async (name) => {
 
-    //         if(name){
-    //             const dep = await axios.get(`http://localhost:5000/getNomDep/${name}`)
-    //         }else alert("probleme")
-            
-
-    //           //alert(dep.nom_dep);
+      
+                await axios.get(`http://localhost:5000/getNomDep/${name}`).then((response)=>{
+                   
+                    setNomDep(response.data.dep )
+                 
+                })
+  
+               
+            }
           
-            
-          
-    //     }
-
-    //   getNomDepByNameChef();
-   
+ 
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [classe, setClasse] = useState('')
     const [image, setImage] = useState('')
-    const [nom_dep, setNomdep] = useState('');
-   
 
-        //const [nom_dep, setNomDep] = useState('');
-    // const history = useHistory();
+ 
     const add = async (e) => {
         e.preventDefault();
+     
 
         try {
-            // let nom_dep = getNomDep();
+         
 
             const formData = new FormData();
+         
             formData.append('image', image)
             formData.append('title', title)
             formData.append('description', description)
@@ -103,7 +102,7 @@ alert(name);
             history.push('/dashboardChef');
         } catch (error) {
             if (error.response) {
-                alert(error.response.data.msg);
+                console.log(error.response.data.msg);
             }
         }
     };
@@ -144,14 +143,13 @@ alert(name);
                             />
                     </Form.Group>
 
-                    {/* <Form.Group className="mb-3" controlId="classe">
-                        <Form.Label className=" ">Classe</Form.Label>
+                    <Form.Group className="mb-3" controlId="classe">
+                        <Form.Label className=" ">department</Form.Label>
                         <Form.Control
-                            value={classe}
-                            onChange={(e) => setClasse(e.target.value)}
+                            value={nom_dep}
                             type="text"
                             />
-                    </Form.Group> */}
+                    </Form.Group>
 
                     <Form.Group className="mb-3" controlId="classe">
                         <Form.Label className=" ">Classe</Form.Label>
