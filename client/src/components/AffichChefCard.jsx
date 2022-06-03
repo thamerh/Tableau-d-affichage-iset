@@ -17,7 +17,7 @@ const AfficheCard = ({ affiche }) => {
                         Description: {affiche.description.slice(0,10)}...
                     </Card.Text>
                  
-                    <Link to={`Affiche/${affiche.id}`}>
+                    <Link to={`AfficheChef/${affiche.id}`}>
                         <Button variant="primary">Detail</Button>
                     </Link>
                 </Card.Body>
