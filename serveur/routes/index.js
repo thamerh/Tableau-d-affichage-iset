@@ -33,9 +33,9 @@ router.post('/AddChefAutorization', AddChefAutorization );
 router.post('/AddAdminAutorization', AddAdminAutorization );
 router.post('/addAfficheChef' , uploadChef, addAfficheChef);
 router.get('/allAffichesChef/:nom_dep', getAllAffichesChef );
-router.get('/AffichChef/:id',getOneAfficheChef);
-router.put('/AffichChef/:id', updateAfficheChef);
-router.delete('/AffichChef/:id', deleteAfficheChef);
+router.get('/AfficheChef/:id', getOneAfficheChef);
+router.put('/AfficheChef/edit/:id', updateAfficheChef);
+router.delete('/AfficheChef/:id', deleteAfficheChef);
 router.get('/getNomDep/:name',getNomDep);
 
 export default router;
