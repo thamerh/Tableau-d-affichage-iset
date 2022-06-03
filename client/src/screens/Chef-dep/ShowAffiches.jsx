@@ -21,12 +21,9 @@ const ShowAffiche = () => {
         refreshToken();
       }, []);
       useEffect(() => {
-        getNomDepByNameChef(name) ;
+        getAllAffiche(name) ;
       }, [name]);
-    useEffect(() => {
-        getAfficheData(nom_dep);
    
-    },[nom_dep])
     const refreshToken = async () => {
         try {
             const response = await axios.get('http://localhost:5000/tokenChef');
@@ -65,22 +62,20 @@ const ShowAffiche = () => {
 
 
 
-const getNomDepByNameChef = async (name) => {
+const getAllAffiche = async (name) => {
 
       
-                await axios.get(`http://localhost:5000/getNomDep/${name}`).then((response)=>{
+              const {data}=  await axios.get(`http://localhost:5000/getNomDep/${name}`)
                    
-                    setNomDep(response.data.dep)
-                 
-                })
-  
-               
-            }
-const getAfficheData = async (nom_dep) => {
-                const { data } = await axios.get(`http://localhost:5000/allAffichesChef/${nom_dep}`)                
-
-                window.localStorage.setItem('Aff',JSON.stringify(data));
-               setAffiche(JSON.parse(window.localStorage.getItem(('Aff'))))
+                   // setNomDep(data.dep)
+ 
+                         
+                 await axios.get(`http://localhost:5000/allAffichesChef/${data.dep}`).then((response)=>{
+                   
+                    setAffiche((response.data));
+ 
+                });  
+                console.log(Affiche)             
                 
             }
     return (
