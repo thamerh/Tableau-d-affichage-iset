@@ -12,13 +12,13 @@ import {LoginChef }from "./components/Chef-Department/Login";
 import NavbarChef from "./components/Chef-Department/NavBar";
 import DashboardChef from "./components/Chef-Department/Dashboard";
 import RegisterChef from "./components/Chef-Department/Register";
-
 import {LoginAdmin }from "./components/Admin/Login";
-import DashboardAdmin from "./components/Admin/Dashboard";
 import RegisterAdmin from "./components/Admin/Register";
 import AddAffiche from './screens/Chef-dep/AddAffiche'
 import ShowAffiche from './screens/Chef-dep/ShowAffiches'
 import Routes from './screens/Routes';
+import EditAffiche from './screens/Chef-dep/EditAffiche';
+import {AfficheDetail } from './screens/Chef-dep/AfficheDetail'
 
 function App() {
   return (
@@ -67,18 +67,9 @@ function App() {
      <Route exact path='/Afficheschef' >
       <ShowAffiche/>
      </Route>
-      {/* <Route exact path='/Afficheschef' >
-      <ShowAffiches/>
-     </Route>
-     <Route exact path='/AddAdmin' >
-      <AddAnotherAdmin/>
-     </Route>
-     <Route exact path='/AddChef' >
-      <AddChef/>
-     </Route>
-     <Route exact path='/AddStudentCard' >
-      <AddEtuCard/>
-     </Route> */}
+     <Route exact path='/AfficheChef/edit/:id'> <EditAffiche/></Route>
+     <Route exact path='/AfficheChef/:id'><AfficheDetail/></Route> 
+     
      {/* <Route exact path='/Affiche/edit/:id'> <EditAffiche/></Route>
      <Route exact path='/Affiche/:id'><AfficheDetail/></Route> */}
     </Switch>
