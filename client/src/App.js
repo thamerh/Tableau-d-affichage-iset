@@ -18,7 +18,11 @@ import AddAffiche from './screens/Chef-dep/AddAffiche'
 import ShowAffiche from './screens/Chef-dep/ShowAffiches'
 import Routes from './screens/Routes';
 import EditAffiche from './screens/Chef-dep/EditAffiche';
-import {AfficheDetail } from './screens/Chef-dep/AfficheDetail'
+import {AfficheDetail } from './screens/Chef-dep/AfficheDetail';
+import AddEmploi from './screens/Chef-dep/AddEmploi';
+import ShowEmploi from './screens/Chef-dep/ShowEmplois'
+import {EmploiDetail} from './screens/Chef-dep/EmploiDetail'
+import EditEmploi from './screens/Chef-dep/EditEmploi'
 
 function App() {
   return (
@@ -72,6 +76,17 @@ function App() {
      
      {/* <Route exact path='/Affiche/edit/:id'> <EditAffiche/></Route>
      <Route exact path='/Affiche/:id'><AfficheDetail/></Route> */}
+     <Route exact path='/addEmploi' >
+      <AddEmploi/>
+     </Route>
+
+     <Route exact path='/Emploichef' >
+      <ShowEmploi/>
+     </Route>
+
+     <Route exact path='/Emploi/:id'><EmploiDetail/></Route> 
+     <Route exact path='/Emploi/edit/:id'> <EditEmploi /></Route>
+     <Route exact path='/Emploi/:id'>< EmploiDetail/></Route>
     </Switch>
 
   </BrowserRouter>
