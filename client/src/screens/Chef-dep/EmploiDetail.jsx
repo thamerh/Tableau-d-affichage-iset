@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router'
 import axios from 'axios'
 
 
-export const EmploiDetail = () => {
+const EmploiDetail = () => {
 
     const { id } = useParams()
     const history = useHistory()
@@ -85,6 +85,7 @@ export const EmploiDetail = () => {
 </div>
 )
 }
+export default EmploiDetail;
 
  const HeaderStyle = {
     width: "100%",

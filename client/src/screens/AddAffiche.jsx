@@ -15,7 +15,6 @@ const AddAffiche = () => {
 
     useEffect(() => {
         refreshToken();
-        // getUsers();
     }, []);
 
     const refreshToken = async () => {
