@@ -1,4 +1,4 @@
-
+import React from 'react';
 import './App.css';
 import Sidebar from './components/Admin/SideBar';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -17,12 +17,14 @@ import RegisterAdmin from "./components/Admin/Register";
 import AddAffiche from './screens/Chef-dep/AddAffiche'
 import ShowAffiche from './screens/Chef-dep/ShowAffiches'
 import Routes from './screens/Routes';
+import Routeschef from './screens/Chef-dep/RouteChef'
 import EditAffiche from './screens/Chef-dep/EditAffiche';
 import {AfficheDetail } from './screens/Chef-dep/AfficheDetail';
 import AddEmploi from './screens/Chef-dep/AddEmploi';
 import ShowEmploi from './screens/Chef-dep/ShowEmplois'
 import {EmploiDetail} from './screens/Chef-dep/EmploiDetail'
 import EditEmploi from './screens/Chef-dep/EditEmploi'
+import RoutesChef from './screens/Chef-dep/RouteChef'
 
 function App() {
   return (
@@ -51,10 +53,10 @@ function App() {
       <Route path="/registerChef">
       <RegisterChef/>
       </Route>
-      <Route path="/dashboardChef">
+      {/* <Route path="/dashboardChef">
       <NavbarChef/>
       <DashboardChef/>
-      </Route>
+      </Route> */}
 
       <Route  path="/loginAdmin">
       <LoginAdmin/>
@@ -65,7 +67,10 @@ function App() {
       <Route path="/dashboardAdmin">   
       <Routes/>
       </Route>
-      <Route exact path='/addAffichechef' >
+      <Route path="/dashboardChef">   
+      <RoutesChef/>
+      </Route>
+      {/* <Route exact path='/addAffichechef' >
       <AddAffiche/>
      </Route>
      <Route exact path='/Afficheschef' >
@@ -73,10 +78,10 @@ function App() {
      </Route>
      <Route exact path='/AfficheChef/edit/:id'> <EditAffiche/></Route>
      <Route exact path='/AfficheChef/:id'><AfficheDetail/></Route> 
-     
+      */}
      {/* <Route exact path='/Affiche/edit/:id'> <EditAffiche/></Route>
      <Route exact path='/Affiche/:id'><AfficheDetail/></Route> */}
-     <Route exact path='/addEmploi' >
+     {/* <Route exact path='/addEmploi' >
       <AddEmploi/>
      </Route>
 
@@ -86,7 +91,7 @@ function App() {
 
      <Route exact path='/Emploi/:id'><EmploiDetail/></Route> 
      <Route exact path='/Emploi/edit/:id'> <EditEmploi /></Route>
-     <Route exact path='/Emploi/:id'>< EmploiDetail/></Route>
+     <Route exact path='/Emploi/:id'>< EmploiDetail/></Route> */}
     </Switch>
 
   </BrowserRouter>
