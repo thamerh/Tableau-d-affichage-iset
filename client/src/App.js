@@ -1,4 +1,4 @@
-
+import React from 'react';
 import './App.css';
 import Sidebar from './components/Admin/SideBar';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -12,19 +12,19 @@ import {LoginChef }from "./components/Chef-Department/Login";
 import NavbarChef from "./components/Chef-Department/NavBar";
 import DashboardChef from "./components/Chef-Department/Dashboard";
 import RegisterChef from "./components/Chef-Department/Register";
-
 import {LoginAdmin }from "./components/Admin/Login";
-// import NavbarAdmin from "./components/Admin/NavBar";
-import DashboardAdmin from "./components/Admin/Dashboard";
 import RegisterAdmin from "./components/Admin/Register";
-// import AddAffiche from './screens/AddAffiche'
-// import EditAffiche from './screens/EditAffiche'
-// import {AfficheDetail} from './screens/AfficheDetail'
-// import ShowAffiches from './screens/ShowAffiches'
-// import {AddAnotherAdmin} from './screens/AddCodeAdmin'
-// import {AddChef} from './screens/AddCodeChef'
-// import {AddEtuCard} from './screens/AddCodeEtu'
+import AddAffiche from './screens/Chef-dep/AddAffiche'
+import ShowAffiche from './screens/Chef-dep/ShowAffiches'
 import Routes from './screens/Routes';
+import Routeschef from './screens/Chef-dep/RouteChef'
+import EditAffiche from './screens/Chef-dep/EditAffiche';
+import {AfficheDetail } from './screens/Chef-dep/AfficheDetail';
+import AddEmploi from './screens/Chef-dep/AddEmploi';
+import ShowEmploi from './screens/Chef-dep/ShowEmplois'
+import {EmploiDetail} from './screens/Chef-dep/EmploiDetail'
+import EditEmploi from './screens/Chef-dep/EditEmploi'
+import RoutesChef from './screens/Chef-dep/RouteChef'
 
 function App() {
   return (
@@ -53,10 +53,10 @@ function App() {
       <Route path="/registerChef">
       <RegisterChef/>
       </Route>
-      <Route path="/dashboardChef">
+      {/* <Route path="/dashboardChef">
       <NavbarChef/>
       <DashboardChef/>
-      </Route>
+      </Route> */}
 
       <Route  path="/loginAdmin">
       <LoginAdmin/>
@@ -67,23 +67,31 @@ function App() {
       <Route path="/dashboardAdmin">   
       <Routes/>
       </Route>
-      {/* <Route exact path='/addAffiche' >
+      <Route path="/dashboardChef">   
+      <RoutesChef/>
+      </Route>
+      {/* <Route exact path='/addAffichechef' >
       <AddAffiche/>
      </Route>
-      <Route exact path='/Affiches' >
-      <ShowAffiches/>
+     <Route exact path='/Afficheschef' >
+      <ShowAffiche/>
      </Route>
-     <Route exact path='/AddAdmin' >
-      <AddAnotherAdmin/>
-     </Route>
-     <Route exact path='/AddChef' >
-      <AddChef/>
-     </Route>
-     <Route exact path='/AddStudentCard' >
-      <AddEtuCard/>
-     </Route> */}
+     <Route exact path='/AfficheChef/edit/:id'> <EditAffiche/></Route>
+     <Route exact path='/AfficheChef/:id'><AfficheDetail/></Route> 
+      */}
      {/* <Route exact path='/Affiche/edit/:id'> <EditAffiche/></Route>
      <Route exact path='/Affiche/:id'><AfficheDetail/></Route> */}
+     {/* <Route exact path='/addEmploi' >
+      <AddEmploi/>
+     </Route>
+
+     <Route exact path='/Emploichef' >
+      <ShowEmploi/>
+     </Route>
+
+     <Route exact path='/Emploi/:id'><EmploiDetail/></Route> 
+     <Route exact path='/Emploi/edit/:id'> <EditEmploi /></Route>
+     <Route exact path='/Emploi/:id'>< EmploiDetail/></Route> */}
     </Switch>
 
   </BrowserRouter>

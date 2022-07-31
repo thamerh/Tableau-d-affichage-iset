@@ -1,10 +1,11 @@
 import express from "express";
 import { RegisterEtu,LoginEtu,LogoutEtu } from "../controllers/Etudiants.js";
-import { RegisterChef,LoginChef,LogoutChef } from "../controllers/ChefDep.js";
+import { RegisterChef,LoginChef,LogoutChef,getNomDep } from "../controllers/ChefDep.js";
 import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization,AddAdminAutorization} from "../controllers/Admin.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshTokenChef, refreshTokenEtu, refreshTokenAdmin} from "../controllers/RefreshToken.js";
 import { addAffiche,getAllAffiches,getOneAffiche,updateAffiche,deleteAffiche,getPublishedAffiche,upload} from "../controllers/AfficheController.js";
+import {addAfficheChef, uploadChef,getAllAffichesChef,getOneAfficheChef,updateAfficheChef,deleteAfficheChef,addEmploi,getAllEmplois,getOneEmploi,updateEmploiChef,deleteEmploiChef } from "../controllers/ChefAffich.js"
 
 
 const router = express.Router();
@@ -30,5 +31,17 @@ router.delete('/:id', deleteAffiche);
 router.post('/AddCarteEtu', AddCarteEtu);
 router.post('/AddChefAutorization', AddChefAutorization );
 router.post('/AddAdminAutorization', AddAdminAutorization );
+router.post('/addAfficheChef' , uploadChef, addAfficheChef);
+router.get('/allAffichesChef/:nom_dep', getAllAffichesChef );
+router.get('/AfficheChef/:id', getOneAfficheChef);
+router.put('/AfficheChef/edit/:id', updateAfficheChef);
+router.delete('/AfficheChef/:id', deleteAfficheChef);
+router.get('/getNomDep/:name',getNomDep);
+
+router.post('/addEmploi' , uploadChef, addEmploi);
+router.get('/allEmploisChef/:nom_dep', getAllEmplois );
+router.get('/EmploiChef/:id', getOneEmploi);
+router.put('/EmploiChef/edit/:id', updateEmploiChef);
+router.delete('/EmploiChef/:id', deleteEmploiChef);
 
 export default router;

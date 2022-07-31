@@ -1,51 +1,21 @@
-import React from 'react'
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import React from "react";
+import { CDBNavbar, CDBInput } from "cdbreact";
+import { Header } from "../Admin/Navbar.Style";
 
-const NavbarChef = () => {
-    const history = useHistory();
+const Navbar = () => {
 
-    const Logout = async () => {
-        try {
-            await axios.delete('http://localhost:5000/logoutChef');
-            history.push("/");
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    return (
-        <nav className="navbar is-light" role="navigation" aria-label="main navigation">
-            <div className="container">
-                <div className="navbar-brand">
-                  
-                    <a href="/" role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-
-                <div id="navbarBasicExample" className="navbar-menu">
-                    <div className="navbar-start">
-                        <a href="/" className="navbar-item">
-                            Home
-                        </a>
-                    </div>
-
-                    <div className="navbar-end">
-                        <div className="navbar-item">
-                            <div className="buttons">
-                                <button onClick={Logout} className="button is-light">
-                                    Log Out
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+	return (
+        <Header >
+      
+          <CDBNavbar dark expand="md" scrolling className="justify-content-start" style={{background:"#333" , color:"#fff"}}>
+            <div className="ml-auto">
+              <i className="fas fa-bell"></i>
+              <i className="fas fa-comment-alt mx-4"></i>
+              <img alt="panelImage" src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-user-vector-icon-png-image_3788518.jpg" style={{width:"3rem",height:"3rem", borderRadius:'50%'}}/>
             </div>
-        </nav>
-    )
+          </CDBNavbar>
+          </Header>
+	);
 }
 
-export default NavbarChef
+export default Navbar;

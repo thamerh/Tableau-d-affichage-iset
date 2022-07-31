@@ -81,3 +81,17 @@ export const LogoutChef = async(req, res) => {
     res.clearCookie('refreshToken');
     return res.sendStatus(200);
 }
+
+
+export const getNomDep = async(req, res)=>{
+    let name = req.params.name
+    const dep = await Chef.findAll({
+        where:{
+            name: name
+        },
+        attributes: ["nom_dep"]
+    });
+    //console.log(dep[0].dataValues.nom_dep);
+    res.status(200).send({dep:dep[0].dataValues.nom_dep});
+
+}
