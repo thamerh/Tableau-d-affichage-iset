@@ -6,7 +6,7 @@ import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
 import '../secreens.css';
 
-const ShowAffiche = () => {
+const ShowEmploi = () => {
     const history = useHistory();
     const [Affiche, setAffiche] = useState([])
     const [name, setName] = useState('');
@@ -103,4 +103,4 @@ const getAllAffiche = async (name) => {
     )
 }
 
-export default ShowAffiche
+export default ShowEmploi ;
