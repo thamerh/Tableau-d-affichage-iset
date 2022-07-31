@@ -4,7 +4,7 @@ import { Container, Form, Button } from 'react-bootstrap';
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
 
-const AddEmploi = () => {
+const AddEmploii = () => {
 
     const [name, setName] = useState('');
     const [token, setToken] = useState('');
@@ -145,8 +145,7 @@ const getNomDepByNameChef = async (name) => {
         </div>
     )
 }
-
-export default AddEmploi ;
+export default AddEmploii;
 const HeaderStyle = {
     width: "100%",
     height: "100vh",
