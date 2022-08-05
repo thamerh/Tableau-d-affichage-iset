@@ -40,7 +40,7 @@ const EmploiDetail = () => {
     // handling Delete
     const handleDelete = async (id) => {
         await axios.delete(`http://localhost:5000/EmploiChef/${id}`)
-        history.push('/Emploichef')
+        history.push('/dashboardChef')
     }
 
   
