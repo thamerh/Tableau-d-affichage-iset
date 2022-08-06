@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router'
 import axios from 'axios'
 
 
-export const AfficheDetail = () => {
+const AfficheDetail = () => {
 
     const { id } = useParams()
     const history = useHistory()
@@ -40,7 +40,7 @@ export const AfficheDetail = () => {
     // handling Delete
     const handleDelete = async (id) => {
         await axios.delete(`http://localhost:5000/AfficheChef/${id}`)
-        history.push('/Afficheschef')
+        history.push('/dashboardChef')
     }
 
   
@@ -85,6 +85,7 @@ export const AfficheDetail = () => {
 </div>
 )
 }
+export default  AfficheDetail;
 
  const HeaderStyle = {
     width: "100%",
