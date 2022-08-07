@@ -1,8 +1,9 @@
 import Etudiants from "../models/EtudiantsModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
-
+import AfficheChef from "../models/AfficheChefModel.js";
+import Affiche from "../models/AfficheModel.js";
+import db from "../config/Database.js";
 
 export const RegisterEtu = async(req, res) => {
     const { name, email,num_insc,cin, password, confPassword } = req.body;
@@ -79,4 +80,36 @@ export const LogoutEtu = async(req, res) => {
     });
     res.clearCookie('refreshToken');
     return res.sendStatus(200);
+}
+// / 2. get all affiches student
+
+export const getAllAffichesStudent = async ( req, res) => {
+    try {
+        let tha= req.params.ClasseStudent;
+        let nom_dep = req.params.nom_dep;
+        let all="All";
+        let afficheChefAll = await AfficheChef.findAll({ where: { department:nom_dep ,    classe:[tha, all]
+          }});
+        let afficheAdmin = await Affiche.findAll({})
+        const affiche = {  ...afficheChefAll, ...afficheAdmin }
+          res.status(200).send(affiche);
+          
+   
+    } catch (error){
+        console.log(error);
+        return res.status(404).json({msg: "problem"});
+
+    } 
+
+}
+
+// // 3. get single Affiche student
+
+export const getOneAfficheStudents = async (req, res) => {
+ let id = req.params.id
+let afficheChef = await AfficheChef.findAll({ where: { id: id }});
+let afficheAdmin = await Affiche.findAll({where: { id: id }})
+const affiche = {  ...afficheChef, ...afficheAdmin }
+res.status(200).send(affiche)
+
 }
