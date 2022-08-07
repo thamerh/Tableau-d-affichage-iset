@@ -77,18 +77,12 @@ const Sidebar = () => {
           <CDBSidebarMenu>
             <CDBSidebarMenuItem >Welcome  {name}</CDBSidebarMenuItem>
             <NavLink exact to="/addAffiche" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="table">Add Affich</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="fa fa-plus-square">Add Affich</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/addEmploi" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="table">Add Emploi</CDBSidebarMenuItem>
-            </NavLink>
-        
-            {/* <NavLink exact to="/analytics" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="chart-line">Analytics</CDBSidebarMenuItem>
-            </NavLink> */}
-
-          
-              <CDBSidebarMenuItem icon="exclamation-circle">
+              <CDBSidebarMenuItem icon="fa fa-plus-square">Add Emploi</CDBSidebarMenuItem>
+            </NavLink>    
+              <CDBSidebarMenuItem icon="fa fa-power-off">
               <div>
                                 <button onClick={Logout} className="LogOutStyleButton">
                                     Log Out
