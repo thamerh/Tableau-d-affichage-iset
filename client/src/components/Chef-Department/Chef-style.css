@@ -1,3 +1,11 @@
 .radio-style{
     padding-right: 28px;
 }
+.TitreStyle{
+    text-align: center;
+    font-size: 25px;
+    padding-top: 10px;
+    color: black;
+    font-family: 'Pacifico', cursive;
+
+}
