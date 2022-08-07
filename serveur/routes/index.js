@@ -1,5 +1,5 @@
 import express from "express";
-import { RegisterEtu,LoginEtu,LogoutEtu } from "../controllers/Etudiants.js";
+import { RegisterEtu,LoginEtu,LogoutEtu,getAllAffichesStudent,getOneAfficheStudents} from "../controllers/Etudiants.js";
 import { RegisterChef,LoginChef,LogoutChef,getNomDep } from "../controllers/ChefDep.js";
 import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization,AddAdminAutorization} from "../controllers/Admin.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
@@ -43,5 +43,8 @@ router.get('/allEmploisChef/:nom_dep', getAllEmplois );
 router.get('/EmploiChef/:id', getOneEmploi);
 router.put('/EmploiChef/edit/:id', updateEmploiChef);
 router.delete('/EmploiChef/:id', deleteEmploiChef);
+
+router.get ('/allAffichesStudent/:nom_dep/:ClasseStudent', getAllAffichesStudent );
+router.get('/getOneAfficheStudent/:id',getOneAfficheStudents);
 
 export default router;
