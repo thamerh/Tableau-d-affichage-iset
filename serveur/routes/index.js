@@ -1,5 +1,5 @@
 import express from "express";
-import { RegisterEtu,LoginEtu,LogoutEtu,getAllAffichesStudent,getOneAfficheStudents} from "../controllers/Etudiants.js";
+import { RegisterEtu,LoginEtu,LogoutEtu,getAllAffichesStudent,getOneAfficheStudents,getNomDepClass} from "../controllers/Etudiants.js";
 import { RegisterChef,LoginChef,LogoutChef,getNomDep } from "../controllers/ChefDep.js";
 import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization,AddAdminAutorization} from "../controllers/Admin.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
@@ -46,5 +46,6 @@ router.delete('/EmploiChef/:id', deleteEmploiChef);
 
 router.get ('/allAffichesStudent/:nom_dep/:ClasseStudent', getAllAffichesStudent );
 router.get('/getOneAfficheStudent/:id',getOneAfficheStudents);
+router.get('/getNomDepClass/:name', getNomDepClass);
 
 export default router;
