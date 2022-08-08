@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import AfficheChef from "../models/AfficheChefModel.js";
 import Affiche from "../models/AfficheModel.js";
+import Carte from "../models/CarteModel.js"
+import Classe from "../models/ClasseModel.js"
 import db from "../config/Database.js";
 
 export const RegisterEtu = async(req, res) => {
@@ -113,3 +115,35 @@ const affiche = {  ...afficheChef, ...afficheAdmin }
 res.status(200).send(affiche)
 
 }
+// get department and class by name student
+export const getNomDepClass = async(req, res)=>{
+  try {
+    
+    let name = req.params.name
+    const cin = await Etudiants.findAll({
+        where:{
+            name: name
+        },
+        attributes: ["cin"]
+    });
+    const classe = await Carte.findAll({
+        where:{
+            cin: cin[0].dataValues.cin
+        },
+        attributes: ["lib_class"]
+    });
+    const nomDep = await Classe.findAll({
+        where:{
+            lib_class: classe[0].dataValues.lib_class
+        },
+        attributes: ["nom_dep"]
+    });
+    
+
+    res.status(200).send({cin:cin[0].dataValues.cin, dep:nomDep[0].dataValues.nom_dep}); 
+
+} catch (error){
+    console.log(error);
+    return res.status(404).json({msg: "problem"});
+
+} }
