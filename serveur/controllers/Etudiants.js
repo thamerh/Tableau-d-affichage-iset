@@ -93,7 +93,7 @@ export const getAllAffichesStudent = async ( req, res) => {
         let afficheChefAll = await AfficheChef.findAll({ where: { department:nom_dep ,    classe:[tha, all]
           }});
         let afficheAdmin = await Affiche.findAll({})
-        const affiche = {  ...afficheChefAll, ...afficheAdmin }
+        const affiche =  Object.assign(afficheChefAll, afficheAdmin );
           res.status(200).send(affiche);
           
    
@@ -140,7 +140,7 @@ export const getNomDepClass = async(req, res)=>{
     });
     
 
-    res.status(200).send({cin:cin[0].dataValues.cin, dep:nomDep[0].dataValues.nom_dep}); 
+    res.status(200).send({classe:classe[0].dataValues.lib_class, dep:nomDep[0].dataValues.nom_dep}); 
 
 } catch (error){
     console.log(error);
