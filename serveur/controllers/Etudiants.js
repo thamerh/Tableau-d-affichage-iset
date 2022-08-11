@@ -5,7 +5,7 @@ import AfficheChef from "../models/AfficheChefModel.js";
 import Affiche from "../models/AfficheModel.js";
 import Carte from "../models/CarteModel.js"
 import Classe from "../models/ClasseModel.js"
-import db from "../config/Database.js";
+import Emplois from '../models/EmploiModel.js'
 
 export const RegisterEtu = async(req, res) => {
     const { name, email,num_insc,cin, password, confPassword } = req.body;
@@ -90,8 +90,7 @@ export const getAllAffichesStudent = async ( req, res) => {
         let tha= req.params.ClasseStudent;
         let nom_dep = req.params.nom_dep;
         let all="All";
-        let afficheChefAll = await AfficheChef.findAll({ where: { department:nom_dep ,    classe:[tha, all]
-          }});
+        let afficheChefAll = await AfficheChef.findAll({ where: { department:nom_dep ,    classe:[tha, all]}});
         let afficheAdmin = await Affiche.findAll({})
         const affiche =  Object.assign(afficheChefAll, afficheAdmin );
           res.status(200).send(affiche);
@@ -108,14 +107,13 @@ export const getAllAffichesStudent = async ( req, res) => {
 // // 3. get single Affiche student
 
 export const getOneAfficheStudents = async (req, res) => {
- let id = req.params.id
-let afficheChef = await AfficheChef.findAll({ where: { id: id }});
-let afficheAdmin = await Affiche.findAll({where: { id: id }})
-const affiche = {  ...afficheChef, ...afficheAdmin }
-res.status(200).send(affiche)
-
+const id = req.params.id;
+const afficheChef = await AfficheChef.findAll({ where: { id:id }});
+const afficheAdmin = await Affiche.findAll({where: { id:id }});
+const affiche = Object.assign(afficheChef,afficheAdmin );
+res.status(200).send(affiche[0])
 }
-// get department and class by name student
+//4 get department and class by name student
 export const getNomDepClass = async(req, res)=>{
   try {
     
@@ -147,3 +145,31 @@ export const getNomDepClass = async(req, res)=>{
     return res.status(404).json({msg: "problem"});
 
 } }
+// 5. get  Emplois Student
+
+export const getEmploiStudent = async ( req, res) => {
+
+    try {
+        let tha= req.params.ClasseStudent;
+        let nom_dep = req.params.nom_dep;
+        let all="All";
+        let affiche = await Emplois.findAll({ where: { department:nom_dep ,classe:[tha, all]}})
+          res.status(200).send(affiche)
+          console.log(affiche)
+   
+    } catch (error){
+        console.log(error);
+        return res.status(404).json({msg: "problem"});
+
+    } 
+
+}
+// 6. get single emplois
+
+export const getOneEmploiStudent = async (req, res) => {
+
+    let id = req.params.id
+    let affiche = await Emplois.findOne({ where: {id:id }})
+    res.status(200).send(affiche)
+
+}
