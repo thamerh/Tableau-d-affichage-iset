@@ -173,3 +173,10 @@ export const getOneEmploiStudent = async (req, res) => {
     res.status(200).send(affiche)
 
 }
+//7 .Downolods file
+export const DownolodsFile = async (req, res)=>{
+    let file = req.params.file
+    let imgFolder ="Images/"
+    res.download(imgFolder.concat(file));
+    
+}
