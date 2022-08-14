@@ -234,3 +234,22 @@ CREATE TABLE EmploiTemps(
 ALTER TABLE `EmploiTemps`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+
+--
+-- Table structure for table `DocumentStudent` 
+--
+CREATE TABLE DocumentStudent(
+   id VARCHAR(50),
+   image VARCHAR(500),
+   title VARCHAR(50) NOT NULL,
+   name VARCHAR(50) NOT NULL,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+--
+-- AUTO_INCREMENT for table `DocumentStudent` 
+--
+ALTER TABLE `DocumentStudent`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
