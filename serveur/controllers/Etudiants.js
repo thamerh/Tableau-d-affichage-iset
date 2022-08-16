@@ -6,6 +6,7 @@ import Affiche from "../models/AfficheModel.js";
 import Carte from "../models/CarteModel.js"
 import Classe from "../models/ClasseModel.js"
 import Emplois from '../models/EmploiModel.js'
+import DocumentStudents from '../models/DocumentStudentModel.js'
 
 export const RegisterEtu = async(req, res) => {
     const { name, email,num_insc,cin, password, confPassword } = req.body;
@@ -179,4 +180,54 @@ export const DownolodsFile = async (req, res)=>{
     let imgFolder ="Images/"
     res.download(imgFolder.concat(file));
     
+}
+// 8. Add Document student
+
+export const addDocumentForStudent = async (req, res) => {
+   
+    try {
+
+        let info = {
+            image: req.file.path,
+            title: req.body.title,
+            name: req.body.name
+
+        }
+    const affiche = await DocumentStudents.create(info);
+        res.status(200).send(affiche);
+        console.log(affiche);
+    
+    } catch (error){
+        console.log(error);
+        return res.status(404).json({msg: "problem"});
+
+    } 
+}
+// 9. delete document student by id
+
+export const DeleteDocumentStudent = async (req, res) => {
+
+    let id = req.params.id
+    
+    await DocumentStudents.destroy({ where: { id: id }} )
+
+    res.status(200).send('Affiche is deleted !')
+
+}
+
+// 9. get document by name
+
+export const DocumentOneStudent = async (req, res) => {
+    try {
+        let name = req.params.name;
+        let affiche = await DocumentStudents.findAll({ where: { name: name }})
+          res.status(200).send(affiche)
+          console.log(affiche)
+   
+    } catch (error){
+        console.log(error);
+        return res.status(404).json({msg: "problem"});
+
+    } 
+
 }
