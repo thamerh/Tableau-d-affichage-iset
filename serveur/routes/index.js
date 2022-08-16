@@ -1,5 +1,5 @@
 import express from "express";
-import { RegisterEtu,LoginEtu,LogoutEtu,getAllAffichesStudent,getOneAfficheStudents,getNomDepClass,getEmploiStudent,getOneEmploiStudent} from "../controllers/Etudiants.js";
+import { RegisterEtu,LoginEtu,LogoutEtu,getAllAffichesStudent,getOneAfficheStudents,getNomDepClass,getEmploiStudent,getOneEmploiStudent,DownolodsFile,addDocumentForStudent,DeleteDocumentStudent,DocumentOneStudent} from "../controllers/Etudiants.js";
 import { RegisterChef,LoginChef,LogoutChef,getNomDep } from "../controllers/ChefDep.js";
 import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization,AddAdminAutorization} from "../controllers/Admin.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
@@ -49,5 +49,8 @@ router.get('/AfficheStudent/:id',getOneAfficheStudents);
 router.get('/getNomDepClass/:name', getNomDepClass);
 router.get ('/getEmploiStudent/:nom_dep/:ClasseStudent', getEmploiStudent );
 router.get('/EmploiStudent/:id', getOneEmploiStudent);
-
+router.get('/DownolodsFile/:file', DownolodsFile);
+router.post('/addDocumentStudent', upload,addDocumentForStudent);
+router.delete('/deleteDocumentStudent/:id', DeleteDocumentStudent);
+router.get('/getDocumentOneStudent/:name', DocumentOneStudent );
 export default router;
