@@ -7,6 +7,8 @@ import Carte from "../models/CarteModel.js"
 import Classe from "../models/ClasseModel.js"
 import Emplois from '../models/EmploiModel.js'
 import DocumentStudents from '../models/DocumentStudentModel.js'
+import Document_Admin from '../models/DocumentAdminModel.js'
+import MessageStudent from '../models/MessageStudentModel.js'
 
 export const RegisterEtu = async(req, res) => {
     const { name, email,num_insc,cin, password, confPassword } = req.body;
@@ -181,7 +183,7 @@ export const DownolodsFile = async (req, res)=>{
     res.download(imgFolder.concat(file));
     
 }
-// 8. Add Document student
+// 8. Add Document student 
 
 export const addDocumentForStudent = async (req, res) => {
    
@@ -193,7 +195,7 @@ export const addDocumentForStudent = async (req, res) => {
             name: req.body.name
 
         }
-    const affiche = await DocumentStudents.create(info);
+    const affiche = await Document_Admin.create(info);
         res.status(200).send(affiche);
         console.log(affiche);
     
@@ -230,4 +232,24 @@ export const DocumentOneStudent = async (req, res) => {
 
     } 
 
+}
+//Add message from contact screen student 
+export const addMessageStudent = async (req, res) => {
+    try {
+
+        let info = {
+            name: req.body.name,
+            cin : req.body.cin,
+            message: req.body.message,
+            classe: req.body.classe
+        }
+    const Message = await MessageStudent.create(info);
+        res.status(200).send(Message);
+        console.log(Message);
+    
+    } catch (error){
+        console.log(error);
+        return res.status(404).json({msg: "problem"});
+
+    } 
 }
