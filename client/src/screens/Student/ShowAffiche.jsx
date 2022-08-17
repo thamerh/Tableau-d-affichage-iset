@@ -1,7 +1,7 @@
 import React, { useState, useEffect , useCallback} from 'react'
 import axios from 'axios';
 import {Container,Button, Row, Col} from 'react-bootstrap'
-import AfficheCard from '../../components/AfficheCard';
+import AfficheStudentCard from '../../components/AfficheStudentCard';
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
 import '../secreens.css';
@@ -94,7 +94,7 @@ async function getAllAffiche (name) {
                     {
                         Affiche.map(affiche => {
                             return <Col md={6} lg={4} sm={12} key={affiche.id} >
-                                <AfficheCard affiche={affiche} />
+                                <AfficheStudentCard affiche={affiche} />
                             </Col>
                         })
                     }
