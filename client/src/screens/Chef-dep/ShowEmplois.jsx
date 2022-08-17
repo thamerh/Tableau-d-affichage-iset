@@ -65,11 +65,7 @@ const ShowEmploi = () => {
 const getAllAffiche = async (name) => {
 
       
-              const {data}=  await axios.get(`http://localhost:5000/getNomDep/${name}`)
-                   
-                   // setNomDep(data.dep)
- 
-                         
+              const {data}=  await axios.get(`http://localhost:5000/getNomDep/${name}`)         
                  await axios.get(`http://localhost:5000/allEmploisChef/${data.dep}`).then((response)=>{
                    
                     setAffiche((response.data));

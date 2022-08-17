@@ -14,7 +14,6 @@ const EditAffiche = () => {
 
     useEffect(() => {
         refreshToken();
-        // getUsers();
     }, []);
 
     const refreshToken = async () => {
@@ -81,7 +80,7 @@ const EditAffiche = () => {
 
         await axios.put(`http://localhost:5000/AfficheChef/edit/${id}`, data)
 
-        history.push('/Afficheschef')
+        history.push('/dashboardChef')
 
    }
 
