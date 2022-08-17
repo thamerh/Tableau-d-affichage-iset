@@ -253,3 +253,40 @@ CREATE TABLE DocumentStudent(
 ALTER TABLE `DocumentStudent`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+--
+-- Table structure for table `DocumentAdmin` 
+--
+CREATE TABLE DocumentAdmin(
+   id VARCHAR(50),
+   image VARCHAR(500),
+   title VARCHAR(50) NOT NULL,
+   name VARCHAR(50) NOT NULL,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+--
+-- AUTO_INCREMENT for table `DocumentStudent` 
+--
+ALTER TABLE `DocumentAdmin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+--
+-- Table structure for table `MessageStudents` 
+--
+CREATE TABLE MessageStudents(
+   id VARCHAR(50),
+   name VARCHAR(50) NOT NULL,
+   cin VARCHAR(50) NOT NULL,
+   message VARCHAR(500) NOT NULL,
+   classe VARCHAR(50) NOT NULL,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+--
+-- AUTO_INCREMENT for table `MessageStudent` 
+--
+ALTER TABLE `MessageStudents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
