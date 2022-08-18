@@ -233,7 +233,7 @@ export const DocumentOneStudent = async (req, res) => {
     } 
 
 }
-//Add message from contact screen student 
+//10.Add message from contact screen student 
 export const addMessageStudent = async (req, res) => {
     try {
 
@@ -252,4 +252,36 @@ export const addMessageStudent = async (req, res) => {
         return res.status(404).json({msg: "problem"});
 
     } 
+}
+// 8. get document Admin
+export const GetDocumentForAdmins = async (req, res) => {
+    try {
+   let document = await Document_Admin.findAll({});
+     // let document = await sequelize.query('SELECT * FROM Document_Admin')
+          res.status(200).send({document});
+          console.log(document);
+   
+    } catch (error){
+        console.log(error);
+        return res.status(404).json({msg: "problem"});
+
+    } 
+    // try {
+
+    //     let info = {
+    //         image: req.file.path,
+    //         title: req.body.title,
+    //         name: req.body.name
+
+    //     }
+    // const affiche = await Document_Admin.create(info);
+    //     res.status(200).send(affiche);
+    //     console.log(affiche);
+    
+    // } catch (error){
+    //     console.log(error);
+    //     return res.status(404).json({msg: "problem"});
+
+    // } 
+
 }

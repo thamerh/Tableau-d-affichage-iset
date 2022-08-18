@@ -1,10 +1,10 @@
 import express from "express";
-import { RegisterEtu,LoginEtu,LogoutEtu,getAllAffichesStudent,getOneAfficheStudents,getNomDepClass,getEmploiStudent,getOneEmploiStudent,DownolodsFile,addDocumentForStudent,DeleteDocumentStudent,DocumentOneStudent} from "../controllers/Etudiants.js";
+import { RegisterEtu,LoginEtu,LogoutEtu,getAllAffichesStudent,getOneAfficheStudents,getNomDepClass,getEmploiStudent,getOneEmploiStudent,DownolodsFile,addDocumentForStudent,DeleteDocumentStudent,DocumentOneStudent,addMessageStudent} from "../controllers/Etudiants.js";
 import { RegisterChef,LoginChef,LogoutChef,getNomDep } from "../controllers/ChefDep.js";
 import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization,AddAdminAutorization} from "../controllers/Admin.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshTokenChef, refreshTokenEtu, refreshTokenAdmin} from "../controllers/RefreshToken.js";
-import { addAffiche,getAllAffiches,getOneAffiche,updateAffiche,deleteAffiche,getPublishedAffiche,upload} from "../controllers/AfficheController.js";
+import { addAffiche,getAllAffiches,getAllDocument,getOneAffiche,updateAffiche,deleteAffiche,deleteDocument,getPublishedAffiche,upload,DocumentForAdmin} from "../controllers/AfficheController.js";
 import {addAfficheChef, uploadChef,getAllAffichesChef,getOneAfficheChef,updateAfficheChef,deleteAfficheChef,addEmploi,getAllEmplois,getOneEmploi,updateEmploiChef,deleteEmploiChef } from "../controllers/ChefAffich.js"
 
 
@@ -23,11 +23,13 @@ router.delete('/logoutEtu', LogoutEtu);
 router.delete('/LogoutChef', LogoutChef);
 router.delete('/LogoutAdmin', LogoutAdmin);
 router.post('/addAffiche' , upload , addAffiche);
+router.get('/allDocument', getAllDocument );
 router.get('/allAffiches', getAllAffiches );
 router.get('/published', getPublishedAffiche);
 router.get('/:id',getOneAffiche);
 router.put('/:id', updateAffiche);
 router.delete('/:id', deleteAffiche);
+router.delete('/deleteDocument/:id',deleteDocument);
 router.post('/AddCarteEtu', AddCarteEtu);
 router.post('/AddChefAutorization', AddChefAutorization );
 router.post('/AddAdminAutorization', AddAdminAutorization );
@@ -37,13 +39,11 @@ router.get('/AfficheChef/:id', getOneAfficheChef);
 router.put('/AfficheChef/edit/:id', updateAfficheChef);
 router.delete('/AfficheChef/:id', deleteAfficheChef);
 router.get('/getNomDep/:name',getNomDep);
-
 router.post('/addEmploi' , uploadChef, addEmploi);
 router.get('/allEmploisChef/:nom_dep', getAllEmplois );
 router.get('/EmploiChef/:id', getOneEmploi);
 router.put('/EmploiChef/edit/:id', updateEmploiChef);
 router.delete('/EmploiChef/:id', deleteEmploiChef);
-
 router.get ('/allAffichesStudent/:nom_dep/:ClasseStudent', getAllAffichesStudent );
 router.get('/AfficheStudent/:id',getOneAfficheStudents);
 router.get('/getNomDepClass/:name', getNomDepClass);
@@ -53,4 +53,6 @@ router.get('/DownolodsFile/:file', DownolodsFile);
 router.post('/addDocumentStudent', upload,addDocumentForStudent);
 router.delete('/deleteDocumentStudent/:id', DeleteDocumentStudent);
 router.get('/getDocumentOneStudent/:name', DocumentOneStudent );
+router.post('/addMessageStudent', addMessageStudent);
+router.post('/addDocumentAdmin', upload, DocumentForAdmin);
 export default router;
