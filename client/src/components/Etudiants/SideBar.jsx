@@ -26,14 +26,14 @@ const Sidebar = () => {
 
     const refreshToken = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/tokenChef');
+            const response = await axios.get('http://localhost:5000/tokenEtu');
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
             setName(decoded.name);
             setExpire(decoded.exp);
         } catch (error) {
             if (error.response) {
-                history.push("/loginChef");
+                history.push("/loginEtu");
             }
         }
     }
@@ -43,7 +43,7 @@ const Sidebar = () => {
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
         if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:5000/tokenChef');
+            const response = await axios.get('http://localhost:5000/tokenEtu');
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
@@ -57,7 +57,7 @@ const Sidebar = () => {
 
     const Logout = async () => {
         try {
-            await axios.delete('http://localhost:5000/logoutChef');
+            await axios.delete('http://localhost:5000/logoutEtu');
             history.push("/");
         } catch (error) {
             console.log(error);
@@ -68,20 +68,21 @@ const Sidebar = () => {
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
       <CDBSidebar textColor="#fff" backgroundColor="#333">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-          <a href="/dashboardChef" className="text-decoration-none" style={{ color: 'inherit' }}>
-          Dashboard Chef 
+          <a href="/dashboardEtu" className="text-decoration-none" style={{ color: 'inherit' }}>
+          Dashboard Etudiant
           </a>
         </CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <CDBSidebarMenuItem >Welcome  {name}</CDBSidebarMenuItem>
-            <NavLink exact to="/addAffiche" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="fa fa-plus-square">Add Affich</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact to="/addEmploi" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="fa fa-plus-square">Add Emploi</CDBSidebarMenuItem>
-            </NavLink>    
+            <CDBSidebarMenuItem >Welcome  {name}</CDBSidebarMenuItem>   
+            <NavLink exact to="/Document" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="fa fa-plus-square">Document</CDBSidebarMenuItem>
+            </NavLink> 
+
+            <NavLink exact to="/Contact" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="fa fa-plus-square">Contact</CDBSidebarMenuItem>
+            </NavLink>  
               <CDBSidebarMenuItem icon="fa fa-power-off">
               <div>
                                 <button onClick={Logout} className="LogOutStyleButton">

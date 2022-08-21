@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import {Container,Button, Row, Col} from 'react-bootstrap'
-import AfficheCard from '../components/AfficheCard';
+import AfficheCard from '../../components/AfficheCard';
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
-import './secreens.css';
+import '../secreens.css';
+
 
 const ShowAffiche = () => {
     const history = useHistory();
@@ -23,10 +24,6 @@ const ShowAffiche = () => {
     return (
         <div >
            <Container  className="justify-content-center p-2">
-               {/* <div className='   border-bottom border-white'>
-               <h1 className='text-center text-white FontFamily'>Show All Affiche</h1>
-               <a href='dashboardAdmin'><img src='https://static.thenounproject.com/png/2739572-200.png' alt='tttt' className='ImgIconAdmin'/></a>
-               </div> */}
 
                <Row >
                     {

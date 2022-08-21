@@ -81,7 +81,7 @@ const EditEmploi = () => {
 
         await axios.put(`http://localhost:5000/EmploiChef/edit/${id}`, data)
 
-        history.push('/Emploichef')
+        history.push('/dashboardChef')
 
    }
 

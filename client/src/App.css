@@ -80,46 +80,8 @@ body {
   opacity: 1;
   right: 0;
 }
-#drop-don-style1{
-    border-radius: 50px;
-    width:120px;
-    height: 50px;
-    background: #222;
-    border: none;
-    color: #fff !important;
-    font-size: 1.2rem;
-    transition: all .5s;
-    cursor: pointer;
-    text-transform: capitalize
-}
-#drop-don-style2{  
-    border-radius: 50px;   
-    width:230px;
-    height: 50px;
-    background: #222;
-    border: none;
-    color: #fff !important;
-    font-size: 1.2rem;
-    transition: all .5s;
-    cursor: pointer;
-    text-transform: capitalize
-}
-#style-dropdown1{
-    margin-top: 2rem;
-    position: relative;
-    width:130px;
-    height: 50px;
-    left: 560px;
- 
-}
-#style-dropdown2{
-    margin-top: 2rem;
-    position: relative;
-    width:130px;
-    height: 50px;
-    left: 680px;
-    top: -82px;
-}
+
+
 /***    Login Page     ***/
 h2 {
     font-weight: 300
@@ -150,13 +112,17 @@ form label {
     cursor: pointer
 }
 
-/* input {
-    width: 15rem;
-    padding: .3rem;
-    border-radius: 5px;
-    outline: none;
-    border: none
-} */
+
+
+body{
+    background-image: url("https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") ;
+    background-position: "center";
+    background-repeat: "no-repeat";
+    background-size: "cover";
+    min-height: 625px;
+    max-height: max-content;
+
+}
 
 #sub_btn {
     display: block;

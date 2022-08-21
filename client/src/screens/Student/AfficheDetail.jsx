@@ -5,43 +5,36 @@ import { useHistory, useParams } from 'react-router'
 import axios from 'axios'
 
 
-export const AfficheDetail = () => {
+const AfficheDetailStudent= () => {
 
-    const { id } = useParams()
+    const {id}  = useParams()
     const history = useHistory()
 
     const [title, setTitle] = useState('')
     const [AfficheDescription, setAfficheDescription] = useState('')
     const [published, setPublished] = useState(true)
     const [AfficheImage, setAfficheImage] = useState('')
+    const [test, setTest] = useState('')
 
 
    
 
     useEffect(() => {
-
-        const getSingleAfficheData = async () => {
-            const { data } = await axios.get(`http://localhost:5000/${id}`)
-            console.log(data)
-
-            setTitle(data.title)
-            setAfficheDescription(data.description)
-            setPublished(data.published)
-            setAfficheImage(data.image)
-
-         
-
-        }
-        getSingleAfficheData()
-
+    getSingleAfficheData()
     },[id])
 
+    const getSingleAfficheData = async () => {
+        const { data } = await axios.get(`http://localhost:5000/AfficheStudent/${id}`);
+        console.log(data)
+        setTitle(data.title)
+        setAfficheDescription(data.description)
+        setPublished(data.published)
+        setAfficheImage(data.image)
 
-    // handling Delete
-    const handleDelete = async (id) => {
-        await axios.delete(`http://localhost:5000/${id}`)
-        history.push('/dashboardAdmin')
+     
+
     }
+
 
   
 
@@ -53,7 +46,7 @@ export const AfficheDetail = () => {
         <Container className="mt-10 p-4">
         <div className='border-bottom border-white'>
                 <h1  className="text-center text-white FontFamily">Affich Detail</h1>
-                <a href='/dashboardAdmin'><img src='https://static.thenounproject.com/png/2739572-200.png' alt='tttt' className='ImgIconAdmin'/></a>
+                <a href='/Afficheschef'><img src='https://static.thenounproject.com/png/2739572-200.png' alt='tttt' className='ImgIconAdmin'/></a>
              </div>
         <Row>
             <Col  className="d-flex justify-content-center" >
@@ -67,16 +60,7 @@ export const AfficheDetail = () => {
                             </Card.Text>
                             <Card.Text>
                                 Published: {published ? (<small>True</small>) : (<small>false</small>)}
-                            </Card.Text>
-                        <br />
-
-                    
-                            <Link to={`/Affiche/edit/${id}`}>
-                                <Button className="btn  m-2" >Edit</Button>
-                            </Link>
-                            
-                            <Button className="btn btn-danger m-2" onClick={() => handleDelete(id)}>Delete</Button> 
-                        
+                            </Card.Text> 
                     </Card.Body>        
                 </Card>
             </Col>
@@ -85,6 +69,7 @@ export const AfficheDetail = () => {
 </div>
 )
 }
+export default  AfficheDetailStudent;
 
  const HeaderStyle = {
     width: "100%",

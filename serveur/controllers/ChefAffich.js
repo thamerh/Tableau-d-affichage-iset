@@ -92,7 +92,7 @@ export const deleteAfficheChef = async (req, res) => {
 }
 
 
-// 1. Add Emploi
+// 6. Add Emploi
 
 export const addEmploi = async (req, res) => {
    
@@ -116,7 +116,7 @@ export const addEmploi = async (req, res) => {
     } 
 }
 
-// 2. get all Emplois
+// 7. get all Emplois
 
 export const getAllEmplois = async ( req, res) => {
 
@@ -135,7 +135,7 @@ export const getAllEmplois = async ( req, res) => {
     } 
 
 }
-// 3. get single emplois
+// 8. get single emplois
 
 export const getOneEmploi = async (req, res) => {
 
@@ -145,7 +145,7 @@ export const getOneEmploi = async (req, res) => {
 
 }
 
-// 4. update emploi
+// 9. update emploi
 
 export const updateEmploiChef = async (req, res) => {
 
@@ -154,7 +154,7 @@ export const updateEmploiChef = async (req, res) => {
     res.status(200).send(affiche)
 }
 
-// 5. delete affiche by id
+// 10. delete affiche by id
 
 export const deleteEmploiChef = async (req, res) => {
 
@@ -166,7 +166,7 @@ export const deleteEmploiChef = async (req, res) => {
 
 }
 
-// 8. Upload Image Controller
+//11. Upload Image Controller
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

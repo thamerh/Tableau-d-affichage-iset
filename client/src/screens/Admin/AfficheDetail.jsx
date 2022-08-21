@@ -5,13 +5,13 @@ import { useHistory, useParams } from 'react-router'
 import axios from 'axios'
 
 
-const EmploiDetail = () => {
+export const AfficheDetail = () => {
 
     const { id } = useParams()
     const history = useHistory()
 
-    const [classe, setClasse] = useState('')
-    const [department, setDepartment] = useState('')
+    const [title, setTitle] = useState('')
+    const [AfficheDescription, setAfficheDescription] = useState('')
     const [published, setPublished] = useState(true)
     const [AfficheImage, setAfficheImage] = useState('')
 
@@ -21,11 +21,11 @@ const EmploiDetail = () => {
     useEffect(() => {
 
         const getSingleAfficheData = async () => {
-            const { data } = await axios.get(`http://localhost:5000/EmploiChef/${id}`)
+            const { data } = await axios.get(`http://localhost:5000/${id}`)
             console.log(data)
 
-            setClasse(data.classe)
-            setDepartment(data.department)
+            setTitle(data.title)
+            setAfficheDescription(data.description)
             setPublished(data.published)
             setAfficheImage(data.image)
 
@@ -39,31 +39,26 @@ const EmploiDetail = () => {
 
     // handling Delete
     const handleDelete = async (id) => {
-        await axios.delete(`http://localhost:5000/EmploiChef/${id}`)
-        history.push('/dashboardChef')
+        await axios.delete(`http://localhost:5000/${id}`)
+        history.push('/dashboardAdmin')
     }
 
   
 
    
     return (
-        <div style={HeaderStyle}>
-
 
         <Container className="mt-10 p-4">
-        <div className='border-bottom border-white'>
-                <h1  className="text-center text-white FontFamily">Affich Detail</h1>
-                <a href='/Afficheschef'><img src='https://static.thenounproject.com/png/2739572-200.png' alt='tttt' className='ImgIconAdmin'/></a>
-             </div>
+                <h1  className="text-center text-white FontFamily p-4">Affich Detail</h1>               
         <Row>
-            <Col  className="d-flex justify-content-center" >
-                <Card className='shadow-lg m-3 p-4 rounded '>
-                        <Card.Img src={`http://localhost:5000/${AfficheImage}`} style={{height: '25rem' ,width: '25rem'  }} fluid />
+            <Col  className="d-flex justify-content-center " >
+                <Card className='shadow-lg m-3 p-4 rounded column is-8-desktop'>
+                        <Card.Img src={`http://localhost:5000/${AfficheImage}`}  fluid style={{height:'350px'}} />
                         <Card.Body>
-                            <Card.Title>classe: {classe}</Card.Title>
+                            <Card.Title>Title: {title}</Card.Title>
                            
                             <Card.Text>
-                                Department: {department}
+                                Description: {AfficheDescription}
                             </Card.Text>
                             <Card.Text>
                                 Published: {published ? (<small>True</small>) : (<small>false</small>)}
@@ -71,7 +66,7 @@ const EmploiDetail = () => {
                         <br />
 
                     
-                            <Link to={`/Emploi/edit/${id}`}>
+                            <Link to={`/Affiche/edit/${id}`}>
                                 <Button className="btn  m-2" >Edit</Button>
                             </Link>
                             
@@ -82,17 +77,7 @@ const EmploiDetail = () => {
             </Col>
          </Row>
     </Container>
-</div>
 )
 }
-export default EmploiDetail;
 
- const HeaderStyle = {
-    width: "100%",
-    height: "100%",
-    minHeight: "757px",
-    background: `url("https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-}
+ 

@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect , useCallback} from 'react'
 import axios from 'axios';
 import {Container,Button, Row, Col} from 'react-bootstrap'
-import EmploiCard from '../../components/EmploiCard';
+import AfficheStudentCard from '../../components/AfficheStudentCard';
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
 import '../secreens.css';
 
-const ShowEmploi = () => {
+const ShowAffiche = () => {
     const history = useHistory();
-    const [Affiche, setAffiche] = useState([])
+    const [Affiche, setAffiches] = useState([])
     const [name, setName] = useState('');
     const [token, setToken] = useState('');
     const [expire, setExpire] = useState('');
-    const [nom_dep,setNomDep] = useState('');
+
 
     
 
@@ -26,7 +26,7 @@ const ShowEmploi = () => {
    
     const refreshToken = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/tokenChef');
+            const response = await axios.get('http://localhost:5000/tokenEtu');
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
             setName(decoded.name);
@@ -34,7 +34,7 @@ const ShowEmploi = () => {
             
         } catch (error) {
             if (error.response) {
-                history.push("/LoginChef");
+                history.push("/LoginEtu");
             }
         }
        
@@ -45,7 +45,7 @@ const ShowEmploi = () => {
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
         if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:5000/tokenChef');
+            const response = await axios.get('http://localhost:5000/tokenEtu');
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
@@ -62,18 +62,28 @@ const ShowEmploi = () => {
 
 
 
-const getAllAffiche = async (name) => {
+async function getAllAffiche (name) {
 
       
-              const {data}=  await axios.get(`http://localhost:5000/getNomDep/${name}`)         
-                 await axios.get(`http://localhost:5000/allEmploisChef/${data.dep}`).then((response)=>{
-                   
-                    setAffiche((response.data));
- 
-                });  
-                console.log(Affiche)             
+             const {data}=await axios.get(`http://localhost:5000/getNomDepClass/${name}`);
+
+            
+
+                      console.log(data.dep) ;
+                      console.log(data.classe) ;
+          await axios.get(`http://localhost:5000/allAffichesStudent/${data.dep}/${data.classe}`).then((response)=>{
+
+                   console.log((response.data))
+                setAffiches((response.data));
+                  });  
+             
+                 
+                console.log(Affiche)              
+                
                 
             }
+             console.log(Affiche)     
+       
     return (
         <div >
            <Container  className="justify-content-center p-2">
@@ -84,7 +94,7 @@ const getAllAffiche = async (name) => {
                     {
                         Affiche.map(affiche => {
                             return <Col md={6} lg={4} sm={12} key={affiche.id} >
-                                <EmploiCard affiche={affiche} />
+                                <AfficheStudentCard affiche={affiche} />
                             </Col>
                         })
                     }
@@ -94,9 +104,8 @@ const getAllAffiche = async (name) => {
 
            </Container>
 
-           
         </div>
     )
 }
 
-export default ShowEmploi ;
+export default ShowAffiche

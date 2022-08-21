@@ -8,7 +8,7 @@ import EditEmploi from './EditEmploi'
 import  EmploiDetail from './EmploiDetail'
 import AddAffiche from './AddAffiche'
 import EditAffiche from './EditAffiche'
-import {AfficheDetail} from './AfficheDetail'
+import AfficheDetail from './AfficheDetail'
 import ShowEmploi from './ShowEmplois'
 
 const Routeschef = () => {
@@ -23,8 +23,8 @@ const Routeschef = () => {
         <Route path="/AddEmploi" component={AddEmploii} />
         <Route exact path='/Emploi/edit/:id'> <EditEmploi/></Route>
         <Route exact path='/Emploi/:id'><EmploiDetail/></Route>
-        <Route exact path='/Affiche/edit/:id'> <EditAffiche/></Route>
-        <Route exact path='/Affiche/:id'><AfficheDetail/></Route>
+        <Route exact path='/AfficheChef/edit/:id'> <EditAffiche/></Route>
+        <Route exact path='/AfficheChef/:id'><AfficheDetail/></Route>
       </BrowserRouter>
     </Fragment>
   );
