@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import '../../App.css'
 import { useHistory,Link } from 'react-router-dom';
-import {Footer} from "../LandingPage";
+import {Footer} from "../Footer";
 
 export const LoginAdmin = () => {
     const [email, setEmail] = useState('');
@@ -26,7 +26,7 @@ export const LoginAdmin = () => {
     }
 
     return (
-        <div style={ HeaderStyle }>
+        <div >
         <section className=" is-fullheight is-fullwidth" >
             <div className="hero-body">
                 <div className="container">
@@ -67,11 +67,3 @@ export const LoginAdmin = () => {
     )
 }
 
-export const HeaderStyle = {
-    width: "100%",
-    height: "100vh",
-    background: `url("https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-}

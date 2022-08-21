@@ -108,12 +108,10 @@ const getNomDepByNameChef = async (name) => {
     };
 
     return ( 
-        <div style={HeaderStyle} className='row'>
+        <div  className='row'>
             <Container className=' p-2 mt-5'  > 
-            <div className='border-bottom border-white'>
+          
                 <h1  className="text-center text-white FontFamily">Add Affiche</h1>
-                <a href='dashboardAdmin'><img src='https://static.thenounproject.com/png/2739572-200.png' alt='tttt' className='ImgIconAdmin'/></a>
-             </div>
                 <Form  onSubmit={add} method="POST" encType='multipart/form-data' className='w-100 p-3 col-md-6'>
 
                 <Form.Group controlId="fileName"  className="mb-3 ">
@@ -171,11 +169,3 @@ const getNomDepByNameChef = async (name) => {
 }
 
 export default AddAffiche
-const HeaderStyle = {
-    width: "100%",
-    height: "100vh",
-    background: `url("https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-}
