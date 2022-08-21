@@ -1,6 +1,6 @@
 import express from "express";
 import { RegisterEtu,LoginEtu,LogoutEtu,getAllAffichesStudent,getOneAfficheStudents,getNomDepClass,getEmploiStudent,getOneEmploiStudent,DownolodsFile,addDocumentForStudent,DeleteDocumentStudent,DocumentOneStudent,addMessageStudent} from "../controllers/Etudiants.js";
-import { RegisterChef,LoginChef,LogoutChef,getNomDep } from "../controllers/ChefDep.js";
+import { RegisterChef,LoginChef,LogoutChef,getNomDep,MessageChefDep} from "../controllers/ChefDep.js";
 import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization,AddAdminAutorization} from "../controllers/Admin.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshTokenChef, refreshTokenEtu, refreshTokenAdmin} from "../controllers/RefreshToken.js";
@@ -39,6 +39,7 @@ router.get('/AfficheChef/:id', getOneAfficheChef);
 router.put('/AfficheChef/edit/:id', updateAfficheChef);
 router.delete('/AfficheChef/:id', deleteAfficheChef);
 router.get('/getNomDep/:name',getNomDep);
+router.post('/addMessageChef',MessageChefDep);
 router.post('/addEmploi' , uploadChef, addEmploi);
 router.get('/allEmploisChef/:nom_dep', getAllEmplois );
 router.get('/EmploiChef/:id', getOneEmploi);
