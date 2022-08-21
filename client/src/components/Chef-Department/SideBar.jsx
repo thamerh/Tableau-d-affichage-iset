@@ -82,14 +82,14 @@ const Sidebar = () => {
             <NavLink exact to="/addEmploi" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="fa fa-plus-square">Add Emploi</CDBSidebarMenuItem>
             </NavLink>    
-              <CDBSidebarMenuItem icon="fa fa-power-off">
-              <div>
-                                <button onClick={Logout} className="LogOutStyleButton">
+            <NavLink exact to="/contactChef" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="fas fa-envelope-open-text">Contact</CDBSidebarMenuItem>
+            </NavLink> 
+              <CDBSidebarMenuItem onClick={Logout} icon="fas fa-sign-out-alt" activeClassName="activeClicked">
+                                {/* <button onClick={Logout} className="LogOutStyleButton"> */}
                                     Log Out
-                                </button>
-                </div>
+                                {/* </button> */}
               </CDBSidebarMenuItem>
-
           </CDBSidebarMenu>
         </CDBSidebarContent>
 
