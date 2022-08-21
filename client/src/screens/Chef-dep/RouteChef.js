@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import DashboardChef from "../../components/Chef-Department/Dashboard";
+import Navbar from "../../components/Chef-Department/NavBar";
 import ShowAffiches from './ShowAffiches'
 import AddEmploii from './AddEmploi'
 import EditEmploi from './EditEmploi'
@@ -10,6 +11,7 @@ import AddAffiche from './AddAffiche'
 import EditAffiche from './EditAffiche'
 import AfficheDetail from './AfficheDetail'
 import ShowEmploi from './ShowEmplois'
+import ContactChef from './Contact'
 
 const Routeschef = () => {
 
@@ -17,14 +19,16 @@ const Routeschef = () => {
     <Fragment>
       <BrowserRouter>
         <Route exact path="/dashboardChef" render={() => <DashboardChef/> } />
-        <Route path="/addAffiche" component={AddAffiche} />
-        <Route path="/Affiches" component={ShowAffiches} />
-        <Route path="/Emplois" component={ShowEmploi} />
-        <Route path="/AddEmploi" component={AddEmploii} />
-        <Route exact path='/Emploi/edit/:id'> <EditEmploi/></Route>
-        <Route exact path='/Emploi/:id'><EmploiDetail/></Route>
-        <Route exact path='/AfficheChef/edit/:id'> <EditAffiche/></Route>
-        <Route exact path='/AfficheChef/:id'><AfficheDetail/></Route>
+        <Route path="/addAffiche"><Navbar/><AddAffiche/></Route>
+        <Route path="/Affiches"><Navbar/><ShowAffiches/></Route>
+        <Route path="/Emplois"><Navbar/><ShowEmploi/></Route>
+        <Route path="/AddEmploi"><Navbar/><AddEmploii/></Route>
+        <Route exact path='/Emploi/edit/:id'><Navbar/><EditEmploi/></Route>
+        <Route exact path='/Emploi/:id'><Navbar/><EmploiDetail/></Route>
+        <Route exact path='/AfficheChef/edit/:id'><Navbar/><EditAffiche/></Route>
+        <Route exact path='/AfficheChef/:id'><Navbar/><AfficheDetail/></Route>
+        <Route path="/contactChef"><Navbar/><ContactChef/></Route>
+
       </BrowserRouter>
     </Fragment>
   );
