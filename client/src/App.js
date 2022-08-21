@@ -9,7 +9,7 @@ import {LoginChef }from "./components/Chef-Department/Login";
 import RegisterChef from "./components/Chef-Department/Register";
 import {LoginAdmin }from "./components/Admin/Login";
 import RegisterAdmin from "./components/Admin/Register";
-import Routes from './screens/Routes';
+import Routes from './screens/Admin/Routes';
 import RoutesChef from './screens/Chef-dep/RouteChef'
 
 function App() {
