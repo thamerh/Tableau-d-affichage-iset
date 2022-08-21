@@ -290,3 +290,21 @@ CREATE TABLE MessageStudents(
 ALTER TABLE `MessageStudents`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+--
+-- Table structure for table `MessageChef` 
+--
+CREATE TABLE MessageChef(
+   id VARCHAR(50),
+   name VARCHAR(50) NOT NULL,
+   message VARCHAR(500) NOT NULL,
+   departement VARCHAR(50) NOT NULL,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+--
+-- AUTO_INCREMENT for table `MessageAdmin` 
+--
+ALTER TABLE `MessageChef`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
