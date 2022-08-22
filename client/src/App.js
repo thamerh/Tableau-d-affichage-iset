@@ -10,7 +10,8 @@ import RegisterChef from "./components/Chef-Department/Register";
 import {LoginAdmin }from "./components/Admin/Login";
 import RegisterAdmin from "./components/Admin/Register";
 import Routes from './screens/Admin/Routes';
-import RoutesChef from './screens/Chef-dep/RouteChef'
+import RoutesChef from './screens/Chef-dep/RouteChef';
+import RouteStudent from './screens/Student/Routes';
 
 function App() {
   return (
@@ -25,9 +26,6 @@ function App() {
       </Route>
       <Route path="/registerEtu">
       <RegisterEtu/>
-      </Route>
-      <Route path="/dashboardEtu">
-      <DashboardEtu/> 
       </Route>
       <Route  path="/loginChef">
       <LoginChef/>
@@ -47,6 +45,9 @@ function App() {
       <Route path="/dashboardChef">   
       <RoutesChef/>
       </Route>
+      <Route path="/dashboardEtu">   
+      <RouteStudent/>
+      </Route>  
     </Switch>
   </BrowserRouter>
 
