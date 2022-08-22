@@ -75,22 +75,21 @@ const Sidebar = () => {
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <CDBSidebarMenuItem >Welcome  {name}</CDBSidebarMenuItem>   
-            <NavLink exact to="/Document" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="fa fa-plus-square">Document</CDBSidebarMenuItem>
+            <CDBSidebarMenuItem >Welcome  {name}</CDBSidebarMenuItem>
+            <NavLink exact to="/AddDocumentStudent" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="fa fa-plus-square">Add Document</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/DocumentStudent" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="fas fa-file-image">Document</CDBSidebarMenuItem>
+            </NavLink>    
+            <NavLink exact to="/ContactStudent" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="fas fa-envelope-open-text">Contact</CDBSidebarMenuItem>
             </NavLink> 
-
-            <NavLink exact to="/Contact" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="fa fa-plus-square">Contact</CDBSidebarMenuItem>
-            </NavLink>  
-              <CDBSidebarMenuItem icon="fa fa-power-off">
-              <div>
-                                <button onClick={Logout} className="LogOutStyleButton">
+              <CDBSidebarMenuItem onClick={Logout} icon="fas fa-sign-out-alt" activeClassName="activeClicked">
+                                {/* <button onClick={Logout} className="LogOutStyleButton"> */}
                                     Log Out
-                                </button>
-                </div>
+                                {/* </button> */}
               </CDBSidebarMenuItem>
-
           </CDBSidebarMenu>
         </CDBSidebarContent>
 
