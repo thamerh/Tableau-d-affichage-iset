@@ -4,7 +4,7 @@ import { Container, Form, Button } from 'react-bootstrap';
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
 
-const Contact = () => {
+const ContactStudent = () => {
 
     const [name, setName] = useState('');
     const [token, setToken] = useState('');
@@ -76,7 +76,7 @@ const Contact = () => {
     };
 
     return ( 
-        <div style={HeaderStyle} className='row'>
+        <div  className='row'>
             <Container className=' p-2 mt-5'  > 
             <div className=' p-2 mt-5'>
                 <h1  className="text-center text-white FontFamily">Contactez nous</h1>
@@ -120,12 +120,4 @@ const Contact = () => {
     )
 }
 
-export default Contact;
-const HeaderStyle = {
-    width: "100%",
-    height: "100vh",
-    background: `url("https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-}
+export default ContactStudent;
