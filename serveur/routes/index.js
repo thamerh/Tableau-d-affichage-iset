@@ -1,7 +1,7 @@
 import express from "express";
 import { RegisterEtu,LoginEtu,LogoutEtu,getAllAffichesStudent,getOneAfficheStudents,getNomDepClass,getEmploiStudent,getOneEmploiStudent,DownolodsFile,addDocumentForStudent,DeleteDocumentStudent,DocumentOneStudent,addMessageStudent} from "../controllers/Etudiants.js";
 import { RegisterChef,LoginChef,LogoutChef,getNomDep,MessageChefDep} from "../controllers/ChefDep.js";
-import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization,AddAdminAutorization} from "../controllers/Admin.js";
+import { LoginAdmin,RegisterAdmin,LogoutAdmin, AddCarteEtu,AddChefAutorization,AddAdminAutorization,getChefUsers,getStudentUsers,getChefUserById,getStudentUserById,updateChefUser,updateStudentUser,deleteChefUser,deleteStudentUser} from "../controllers/Admin.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshTokenChef, refreshTokenEtu, refreshTokenAdmin} from "../controllers/RefreshToken.js";
 import { addAffiche,getAllAffiches,getAllDocument,getOneAffiche,updateAffiche,deleteAffiche,deleteDocument,getPublishedAffiche,upload,DocumentForAdmin} from "../controllers/AfficheController.js";
@@ -24,6 +24,8 @@ router.delete('/LogoutChef', LogoutChef);
 router.delete('/LogoutAdmin', LogoutAdmin);
 router.post('/addAffiche' , upload , addAffiche);
 router.get('/allDocument', getAllDocument );
+router.get('/ChefUsers',getChefUsers);
+router.get('/StudentUsers',getStudentUsers);
 router.get('/allAffiches', getAllAffiches );
 router.get('/published', getPublishedAffiche);
 router.get('/:id',getOneAffiche);
@@ -56,4 +58,13 @@ router.delete('/deleteDocumentStudent/:id', DeleteDocumentStudent);
 router.get('/getDocumentOneStudent/:name', DocumentOneStudent );
 router.post('/addMessageStudent', addMessageStudent);
 router.post('/addDocumentAdmin', upload, DocumentForAdmin);
+router.get('/ChefUsers/:id', getChefUserById);
+router.patch('/ChefUsers/:id', updateChefUser);
+router.delete('/ChefUsers/:id',deleteChefUser);
+router.get('/StudentUsers',getStudentUsers);
+router.get('/StudentUsers/:id', getStudentUserById);
+router.patch('/StudentUsers/:id', updateStudentUser);
+router.delete('/StudentUsers/:id',deleteStudentUser);
+
+
 export default router;
