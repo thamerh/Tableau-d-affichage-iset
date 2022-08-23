@@ -12,6 +12,9 @@ import {AfficheDetail} from './AfficheDetail'
 import AddDocumentAdmin from './AddDocument'
 import DocumentAdmin from './DocumentAdmin'
 import ShowAffiche  from "./ShowAffiches";
+import UserList from "./UserManegment"
+import EditUser from "./EditChefUser"
+import EditStudentUser from "./EditStudentUser"
 
 const Routes = () => {
 
@@ -23,10 +26,11 @@ const Routes = () => {
         <Route path="/addAffiche"><Navbar/><AddAffiche/></Route>
         <Route path="/Affiches" component={ShowAffiche} />
         <Route path="/AddAdmin"><Navbar/><AddAnotherAdmin/></Route>
-       <Route path="/AddChef"><Navbar/><AddChef/></Route>
+        <Route path="/AddChef"><Navbar/><AddChef/></Route>
         <Route path="/AddStudentCard"><Navbar/><AddEtuCard/></Route>
-        {/* <Route path="/DocumentAdmin" component={DocumentAdmin} /> */}
-
+        <Route path="/editChef/:id"><Navbar/><EditUser/></Route>
+        <Route path="/editStudent/:id"><Navbar/><EditStudentUser/></Route>
+        <Route path="/ManegmentUser"><Navbar/><UserList/></Route>
         <Route exact path='/DocumentAdmin'><Navbar/><DocumentAdmin/></Route>
         <Route exact path='/Affiche/edit/:id'> <Navbar/><EditAffiche/></Route>
         <Route exact path='/Affiche/:id'><Navbar/><AfficheDetail/></Route>
