@@ -58,39 +58,6 @@ CREATE TABLE chef_departement(
    FOREIGN KEY(nom_dep) REFERENCES departement(nom_dep)
 );
 --
--- Table structure for table `notification`
---
-CREATE TABLE notification(
-   id VARCHAR(50),
-   sujet VARCHAR(255),
-   createdAt DATETIME NOT NULL,
-   lib_class VARCHAR(50) NOT NULL,
-   PRIMARY KEY(id),
-   FOREIGN KEY(lib_class) REFERENCES classe(lib_class)
-);
---
--- Table structure for table `message` inheritance in table `notification`
---
-CREATE TABLE message(
-   id VARCHAR(50),
-   msg TEXT,
-   PRIMARY KEY(id),
-   FOREIGN KEY(id) REFERENCES notification(id)
-);
---
--- Table structure for table `image` inheritance in table `notification`
---
-CREATE TABLE image(
-   id VARCHAR(50),
-   nom_img VARCHAR(250),
-   type_img VARCHAR(250),
-   demention_h VARCHAR(50),
-   dimention_v VARCHAR(50),
-   image blob,
-   PRIMARY KEY(id),
-   FOREIGN KEY(id) REFERENCES notification(id)
-);
---
 -- Table structure for table `carte_etudiant`
 --
 CREATE TABLE carte_etudiant(
