@@ -71,7 +71,7 @@ if(name){
   return (
       <div >
          <Container  className="justify-content-center p-2">
-            <div style={{height:"100%",backgroundColor:"black",color:"white",textAlign:"center"}}> Pour envoyer un document à l'administrateur <Link to={`AddDocument`}><button ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qMVADNUe8YhgmPd7zpY02lFbCgwB0hCKfQ&usqp=CAU" style={{height:"65px"}}></img></button> </Link></div>
+            <div style={{height:"100%",backgroundColor:"black",color:"white",textAlign:"center"}}> Pour envoyer un document à l'administrateur <Link to={`AddDocumentStudent`}><button ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qMVADNUe8YhgmPd7zpY02lFbCgwB0hCKfQ&usqp=CAU" style={{height:"65px"}}></img></button> </Link></div>
              <Row >
                   {
                       Affiche.map(affiche => {
