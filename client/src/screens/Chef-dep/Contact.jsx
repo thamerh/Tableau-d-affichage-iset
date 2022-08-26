@@ -83,7 +83,7 @@ const ContactChef = () => {
                 <Form  onSubmit={add} method="POST" encType='multipart/form-data' className='w-100 p-3 col-md-6'>
                  
                     <Form.Group className="mb-3" controlId="department">
-                        <Form.Label className=" ">department</Form.Label>
+                        <Form.Label className=" ">Sujet</Form.Label>
                         <Form.Control
                             value={department}
                             onChange={(e) => setDepartment(e.target.value)}

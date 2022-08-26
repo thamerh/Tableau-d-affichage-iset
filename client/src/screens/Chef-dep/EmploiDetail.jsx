@@ -64,9 +64,7 @@ const EmploiDetail = () => {
                             <Card.Text>
                                 Department: {department}
                             </Card.Text>
-                            <Card.Text>
-                                Published: {published ? (<small>True</small>) : (<small>false</small>)}
-                            </Card.Text>
+                     
                         <br />
 
                     

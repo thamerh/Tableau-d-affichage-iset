@@ -12,7 +12,6 @@ const AfficheDetailStudent= () => {
 
     const [title, setTitle] = useState('')
     const [AfficheDescription, setAfficheDescription] = useState('')
-    const [published, setPublished] = useState(true)
     const [AfficheImage, setAfficheImage] = useState('')
     const [test, setTest] = useState('')
 
@@ -28,7 +27,6 @@ const AfficheDetailStudent= () => {
         console.log(data)
         setTitle(data.title)
         setAfficheDescription(data.description)
-        setPublished(data.published)
         setAfficheImage(data.image)
 
      
@@ -55,9 +53,7 @@ const AfficheDetailStudent= () => {
                             <Card.Text>
                                 Description: {AfficheDescription}
                             </Card.Text>
-                            <Card.Text>
-                                Published: {published ? (<small>True</small>) : (<small>false</small>)}
-                            </Card.Text> 
+                      
                     </Card.Body>        
                 </Card>
             </Col>
