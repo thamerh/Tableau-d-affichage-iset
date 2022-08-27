@@ -8,7 +8,6 @@ import {LoginChef }from "./components/Chef-Department/Login";
 import RegisterChef from "./components/Chef-Department/Register";
 import {LoginAdmin }from "./components/Admin/Login";
 import RegisterAdmin from "./components/Admin/Register";
-import RoutesChef from './screens/Chef-dep/RouteChef'
 import Routes from './screens/Admin/Routes';
 import RoutesChef from './screens/Chef-dep/RouteChef';
 import RouteStudent from './screens/Student/Routes';
