@@ -12,7 +12,6 @@ export const AfficheDetail = () => {
 
     const [title, setTitle] = useState('')
     const [AfficheDescription, setAfficheDescription] = useState('')
-    const [published, setPublished] = useState(true)
     const [AfficheImage, setAfficheImage] = useState('')
 
 
@@ -26,7 +25,6 @@ export const AfficheDetail = () => {
 
             setTitle(data.title)
             setAfficheDescription(data.description)
-            setPublished(data.published)
             setAfficheImage(data.image)
 
          
@@ -47,27 +45,20 @@ export const AfficheDetail = () => {
 
    
     return (
-        <div style={HeaderStyle}>
-
 
         <Container className="mt-10 p-4">
-        <div className='border-bottom border-white'>
-                <h1  className="text-center text-white FontFamily">Affich Detail</h1>
-                <a href='/dashboardAdmin'><img src='https://static.thenounproject.com/png/2739572-200.png' alt='tttt' className='ImgIconAdmin'/></a>
-             </div>
+                <h1  className="text-center text-white FontFamily p-4">Affich Detail</h1>               
         <Row>
-            <Col  className="d-flex justify-content-center" >
-                <Card className='shadow-lg m-3 p-4 rounded '>
-                        <Card.Img src={`http://localhost:5000/${AfficheImage}`} style={{height: '25rem' ,width: '25rem'  }} fluid />
+            <Col  className="d-flex justify-content-center " >
+                <Card className='shadow-lg m-3 p-4 rounded column is-8-desktop'>
+                        <Card.Img src={`http://localhost:5000/${AfficheImage}`}  fluid style={{height:'350px'}} />
                         <Card.Body>
                             <Card.Title>Title: {title}</Card.Title>
                            
                             <Card.Text>
                                 Description: {AfficheDescription}
                             </Card.Text>
-                            <Card.Text>
-                                Published: {published ? (<small>True</small>) : (<small>false</small>)}
-                            </Card.Text>
+                      
                         <br />
 
                     
@@ -82,16 +73,7 @@ export const AfficheDetail = () => {
             </Col>
          </Row>
     </Container>
-</div>
 )
 }
 
- const HeaderStyle = {
-    width: "100%",
-    height: "100%",
-    minHeight: "757px",
-    background: `url("https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-}
+ 

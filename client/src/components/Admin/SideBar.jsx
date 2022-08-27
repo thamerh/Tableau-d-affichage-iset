@@ -11,8 +11,7 @@ import {
   CDBSidebarMenuItem,
 } from "cdbreact";
 import { NavLink,useHistory } from 'react-router-dom';
-import './Admin.css'
-
+import './Admin.css';
 const Sidebar = () => {
     const [name, setName] = useState('');
     const [token, setToken] = useState('');
@@ -22,7 +21,6 @@ const Sidebar = () => {
 
     useEffect(() => {
         refreshToken();
-        // getUsers();
     }, []);
 
     const refreshToken = async () => {
@@ -80,28 +78,29 @@ const Sidebar = () => {
           <CDBSidebarMenu>
             <CDBSidebarMenuItem >Welcome  {name}</CDBSidebarMenuItem>
             <NavLink exact to="/addAffiche" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="table">Add Affich</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="fa fa-plus-square">Add Affich</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/AddAdmin" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="user">Add Admin</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="fas fa-user-cog">Add Admin</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/AddStudentCard" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="user">Add Student</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="fas fa-user-cog">Add Student</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/AddChef" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="user">Add Department Chef</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="fas fa-user-cog">Add Department Chef</CDBSidebarMenuItem>
             </NavLink>
-            {/* <NavLink exact to="/analytics" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="chart-line">Analytics</CDBSidebarMenuItem>
-            </NavLink> */}
+            <NavLink exact to="/DocumentAdmin" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="fas fa-file-image">Document</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/ManegmentUser" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="fas fa-user-edit">Manegment User</CDBSidebarMenuItem>
+            </NavLink>
 
           
-              <CDBSidebarMenuItem icon="exclamation-circle">
-              <div>
-                                <button onClick={Logout} className="LogOutStyleButton">
+              <CDBSidebarMenuItem onClick={Logout} icon="fas fa-sign-out-alt" activeClassName="activeClicked">
+                                {/* <button onClick={Logout} className="LogOutStyleButton"> */}
                                     Log Out
-                                </button>
-                </div>
+                                {/* </button> */}
               </CDBSidebarMenuItem>
 
           </CDBSidebarMenu>

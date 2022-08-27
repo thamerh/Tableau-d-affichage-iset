@@ -58,39 +58,6 @@ CREATE TABLE chef_departement(
    FOREIGN KEY(nom_dep) REFERENCES departement(nom_dep)
 );
 --
--- Table structure for table `notification`
---
-CREATE TABLE notification(
-   id VARCHAR(50),
-   sujet VARCHAR(255),
-   createdAt DATETIME NOT NULL,
-   lib_class VARCHAR(50) NOT NULL,
-   PRIMARY KEY(id),
-   FOREIGN KEY(lib_class) REFERENCES classe(lib_class)
-);
---
--- Table structure for table `message` inheritance in table `notification`
---
-CREATE TABLE message(
-   id VARCHAR(50),
-   msg TEXT,
-   PRIMARY KEY(id),
-   FOREIGN KEY(id) REFERENCES notification(id)
-);
---
--- Table structure for table `image` inheritance in table `notification`
---
-CREATE TABLE image(
-   id VARCHAR(50),
-   nom_img VARCHAR(250),
-   type_img VARCHAR(250),
-   demention_h VARCHAR(50),
-   dimention_v VARCHAR(50),
-   image blob,
-   PRIMARY KEY(id),
-   FOREIGN KEY(id) REFERENCES notification(id)
-);
---
 -- Table structure for table `carte_etudiant`
 --
 CREATE TABLE carte_etudiant(
@@ -232,5 +199,79 @@ CREATE TABLE EmploiTemps(
 -- AUTO_INCREMENT for table `EmploiTemps` 
 --
 ALTER TABLE `EmploiTemps`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+--
+-- Table structure for table `DocumentStudent` 
+--
+CREATE TABLE DocumentStudent(
+   id VARCHAR(50),
+   image VARCHAR(500),
+   title VARCHAR(50) NOT NULL,
+   name VARCHAR(50) NOT NULL,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+--
+-- AUTO_INCREMENT for table `DocumentStudent` 
+--
+ALTER TABLE `DocumentStudent`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+--
+-- Table structure for table `DocumentAdmin` 
+--
+CREATE TABLE DocumentAdmin(
+   id VARCHAR(50),
+   image VARCHAR(500),
+   title VARCHAR(50) NOT NULL,
+   name VARCHAR(50) NOT NULL,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+--
+-- AUTO_INCREMENT for table `DocumentStudent` 
+--
+ALTER TABLE `DocumentAdmin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+--
+-- Table structure for table `MessageStudents` 
+--
+CREATE TABLE MessageStudents(
+   id VARCHAR(50),
+   name VARCHAR(50) NOT NULL,
+   cin VARCHAR(50) NOT NULL,
+   message VARCHAR(500) NOT NULL,
+   classe VARCHAR(50) NOT NULL,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+--
+-- AUTO_INCREMENT for table `MessageStudent` 
+--
+ALTER TABLE `MessageStudents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+--
+-- Table structure for table `MessageChef` 
+--
+CREATE TABLE MessageChef(
+   id VARCHAR(50),
+   name VARCHAR(50) NOT NULL,
+   message VARCHAR(500) NOT NULL,
+   departement VARCHAR(50) NOT NULL,
+   createdAt DATETIME NOT NULL,
+   updatedAt DATETIME NOT NULL,
+   PRIMARY KEY(id)
+);
+--
+-- AUTO_INCREMENT for table `MessageAdmin` 
+--
+ALTER TABLE `MessageChef`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;

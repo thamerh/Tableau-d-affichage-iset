@@ -15,7 +15,8 @@ import { Pie, Bar } from "react-chartjs-2";
 import Sidebar from "./SideBar";
 import Navbar from "./NavBar";
 import "./Dashboard.css";
-import ShowAffiche from '../../screens/ShowAffiches'
+//import ShowAffiche from '../../screens/Admin/ShowAffiches'
+import ShowAffiche from '../../screens/Admin/ShowAffiches';
 
 export const  DashboardAdmin= () => {
     const [name, setName] = useState('');

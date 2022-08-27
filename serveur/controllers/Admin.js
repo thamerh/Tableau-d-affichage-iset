@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 import Carte from "../models/CarteModel.js";
 import Authorization from "../models/AuthorizationModel.js"
 import AuthorizationAdmin from "../models/AuthorizationAdminModel.js"
+import Chef from "../models/ChefDepModel.js";
+import Etudiants from "../models/EtudiantsModel.js";
 
 
 
@@ -132,3 +134,100 @@ export const AddAdminAutorization = async(req, res) => {
 }
 
 
+export const getChefUsers = async(req, res) =>{
+    try {
+        const response = await Chef.findAll({});
+        res.status(200).json(response);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+export const getStudentUsers = async(req, res) =>{
+    try {
+        const response = await Etudiants.findAll();
+        res.status(200).json(response);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const getChefUserById = async(req, res) =>{
+    try {
+        const response = await Chef.findOne({
+            where:{
+                id: req.params.id
+            }
+        });
+        res.status(200).json(response);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+export const getStudentUserById = async(req, res) =>{
+    try {
+        const response = await Etudiants.findOne({
+            where:{
+                id: req.params.id
+            }
+        });
+        res.status(200).json(response);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const updateChefUser = async(req, res) =>{
+    const {cin,name,email,password} = req.body;
+    const salt = await bcrypt.genSalt();
+    const hashPassword = await bcrypt.hash(password, salt);
+    try {
+        await Chef.update({cin,name,email,password:hashPassword},{
+            where:{
+                id: req.params.id
+            }
+        });
+        res.status(200).json({msg: "Chef department Updated"});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+export const updateStudentUser = async(req, res) =>{
+    const {name,email,password} = req.body;
+    const salt = await bcrypt.genSalt();
+    const hashPassword = await bcrypt.hash(password, salt);
+    try {
+        await Etudiants.update({name,email,password:hashPassword},{
+            where:{
+                id: req.params.id
+            }
+        });
+        res.status(200).json({msg: "Student Updated"});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const deleteChefUser = async(req, res) =>{
+    try {
+        await Chef.destroy({
+            where:{
+                id: req.params.id
+            }
+        });
+        res.status(200).json({msg: "Chef department Deleted"});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+export const deleteStudentUser = async(req, res) =>{
+    try {
+        await Etudiants.destroy({
+            where:{
+                id: req.params.id
+            }
+        });
+        res.status(200).json({msg: "Student Deleted"});
+    } catch (error) {
+        console.log(error.message);
+    }
+}

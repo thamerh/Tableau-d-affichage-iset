@@ -27,16 +27,14 @@ export  const AddEtuCard = () => {
     }
 
     return (
-        <div style={ HeaderStyle }>
+       
         <section className=" is-fullheight is-fullwidth" >
             <div className="hero-body">
                 <div className="container">
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
-            <div className='border-bottom border-white'>
+
                 <h1  className="text-center text-white FontFamily">Add Student</h1>
-                <a href='/dashboardAdmin'><img src='https://static.thenounproject.com/png/2739572-200.png' alt='tttt' className='ImgIconAdmin'/></a>
-             </div>
                             <form onSubmit={Auth} className="box">
                                 <h1 className="has-text-centered google-font">Add Student Card Data</h1>
                                 <div className="field mt-5">
@@ -66,16 +64,7 @@ export  const AddEtuCard = () => {
                 </div>
             </div>
         </section>
-        </div>
         
     )
 }
 
-export const HeaderStyle = {
-    width: "100%",
-    minHeight:"100vh",  
-    background: `url("https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-}

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import '../../App.css'
 import { useHistory,Link } from 'react-router-dom';
-import {Footer} from "../LandingPage";
+import {Footer} from "../Footer";
 
 export const LoginEtu = () => {
     const [email, setEmail] = useState('');

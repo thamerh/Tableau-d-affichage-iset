@@ -77,25 +77,19 @@ const Sidebar = () => {
           <CDBSidebarMenu>
             <CDBSidebarMenuItem >Welcome  {name}</CDBSidebarMenuItem>
             <NavLink exact to="/addAffiche" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="table">Add Affich</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="fa fa-plus-square">Add Affich</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/addEmploi" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="table">Add Emploi</CDBSidebarMenuItem>
-            </NavLink>
-        
-            {/* <NavLink exact to="/analytics" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="chart-line">Analytics</CDBSidebarMenuItem>
-            </NavLink> */}
-
-          
-              <CDBSidebarMenuItem icon="exclamation-circle">
-              <div>
-                                <button onClick={Logout} className="LogOutStyleButton">
+              <CDBSidebarMenuItem icon="fa fa-plus-square">Add Emploi</CDBSidebarMenuItem>
+            </NavLink>    
+            <NavLink exact to="/contactChef" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="fas fa-envelope-open-text">Contact</CDBSidebarMenuItem>
+            </NavLink> 
+              <CDBSidebarMenuItem onClick={Logout} icon="fas fa-sign-out-alt" activeClassName="activeClicked">
+                                {/* <button onClick={Logout} className="LogOutStyleButton"> */}
                                     Log Out
-                                </button>
-                </div>
+                                {/* </button> */}
               </CDBSidebarMenuItem>
-
           </CDBSidebarMenu>
         </CDBSidebarContent>
 

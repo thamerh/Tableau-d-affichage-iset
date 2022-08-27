@@ -1,6 +1,7 @@
 import Chef from "../models/ChefDepModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import MessageChef from '../models/MessageChefModel.js'
 
 
 
@@ -94,4 +95,23 @@ export const getNomDep = async(req, res)=>{
     //console.log(dep[0].dataValues.nom_dep);
     res.status(200).send({dep:dep[0].dataValues.nom_dep});
 
+}
+
+export const MessageChefDep = async(req,res)=>{
+    try {
+
+        let info = {
+            name: req.body.name,
+            message: req.body.message,
+            departement: req.body.departement
+        }
+    const Message = await MessageChef.create(info);
+        res.status(200).send(Message);
+        console.log(Message);
+    
+    } catch (error){
+        console.log(error);
+        return res.status(404).json({msg: "problem"});
+
+    } 
 }

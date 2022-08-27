@@ -1,19 +1,15 @@
 import React from 'react';
 import './App.css';
-import Sidebar from './components/Admin/SideBar';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import {LandingPage} from "./components/LandingPage.js";
 import {LoginEtu }from "./components/Etudiants/Login";
-import NavbarEtu from "./components/Etudiants/Navbar";
 import DashboardEtu from "./components/Etudiants/Dashboard";
 import RegisterEtu from "./components/Etudiants/Register";
-
 import {LoginChef }from "./components/Chef-Department/Login";
-import NavbarChef from "./components/Chef-Department/NavBar";
-import DashboardChef from "./components/Chef-Department/Dashboard";
 import RegisterChef from "./components/Chef-Department/Register";
 import {LoginAdmin }from "./components/Admin/Login";
 import RegisterAdmin from "./components/Admin/Register";
+<<<<<<< HEAD
 import AddAffiche from './screens/Chef-dep/AddAffiche'
 import ShowAffiche from './screens/Chef-dep/ShowAffiches'
 import Routes from './screens/Routes';
@@ -25,6 +21,11 @@ import ShowEmploi from './screens/Chef-dep/ShowEmplois'
 import {EmploiDetail} from './screens/Chef-dep/EmploiDetail'
 import EditEmploi from './screens/Chef-dep/EditEmploi'
 import RoutesChef from './screens/Chef-dep/RouteChef'
+=======
+import Routes from './screens/Admin/Routes';
+import RoutesChef from './screens/Chef-dep/RouteChef';
+import RouteStudent from './screens/Student/Routes';
+>>>>>>> dev1
 
 function App() {
   return (
@@ -33,7 +34,6 @@ function App() {
     <Switch>
       <Route exact path="/">
       <LandingPage/>
-
       </Route>
       <Route  path="/loginEtu">
       <LoginEtu/>
@@ -41,23 +41,20 @@ function App() {
       <Route path="/registerEtu">
       <RegisterEtu/>
       </Route>
-      <Route path="/dashboardEtu">
-      <NavbarEtu/>
-      <DashboardEtu/>
-      
-      </Route>
-
       <Route  path="/loginChef">
       <LoginChef/>
       </Route>
       <Route path="/registerChef">
       <RegisterChef/>
       </Route>
+<<<<<<< HEAD
       {/* <Route path="/dashboardChef">
       <NavbarChef/>
       <DashboardChef/>
       </Route> */}
 
+=======
+>>>>>>> dev1
       <Route  path="/loginAdmin">
       <LoginAdmin/>
       </Route>
@@ -70,6 +67,7 @@ function App() {
       <Route path="/dashboardChef">   
       <RoutesChef/>
       </Route>
+<<<<<<< HEAD
       {/* <Route exact path='/addAffichechef' >
       <AddAffiche/>
      </Route>
@@ -92,8 +90,12 @@ function App() {
      <Route exact path='/Emploi/:id'><EmploiDetail/></Route> 
      <Route exact path='/Emploi/edit/:id'> <EditEmploi /></Route>
      <Route exact path='/Emploi/:id'>< EmploiDetail/></Route> */}
+=======
+      <Route path="/dashboardEtu">   
+      <RouteStudent/>
+      </Route>  
+>>>>>>> dev1
     </Switch>
-
   </BrowserRouter>
 
    
