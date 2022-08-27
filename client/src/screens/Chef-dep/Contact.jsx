@@ -1,17 +1,16 @@
 import axios from 'axios'
-import React, { useState,useEffect,useLayoutEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Container, Form, Button } from 'react-bootstrap';
 import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
 
-const ContactStudent = () => {
+const ContactChef = () => {
 
-    const [name, setName] = useState('');
-    const [token, setToken] = useState('');
+    const [name, setName] = useState('') 
+    const [token, setToken] = useState('')
     const [expire, setExpire] = useState('');
-    const [cin, setCin] = useState('')
     const [message, setMessage] = useState('')
-    const [classe, setClasse] = useState('')
+    const [department, setDepartment] = useState('')
     const history = useHistory();  
     useEffect(() => {
         refreshToken();
@@ -19,7 +18,7 @@ const ContactStudent = () => {
       }, []);
     const refreshToken = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/tokenEtu');
+            const response = await axios.get('http://localhost:5000/tokenChef');
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
             setName(decoded.name);
@@ -27,7 +26,7 @@ const ContactStudent = () => {
             
         } catch (error) {
             if (error.response) {
-                history.push("/LoginEtu");
+                history.push("/LoginChef");
             }
         }
        
@@ -38,7 +37,7 @@ const ContactStudent = () => {
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
         if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:5000/tokenEtu');
+            const response = await axios.get('http://localhost:5000/tokenChef');
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
@@ -56,18 +55,16 @@ const ContactStudent = () => {
 
         try {
          console.log(name);
-         console.log(cin);
-         console.log(message)
-         console.log(classe)
+         console.log(message);
+         console.log(department);
          const data={
                 "name":name,
-                "cin":cin,
                 "message":message,
-                "classe":classe
+                "department":department
             }
-            await axios.post('http://localhost:5000/addMessageStudent',data);
+            await axios.post('http://localhost:5000/addMessageChef',data);
             alert(" message envoyer avec succès " )
-            history.push('/dashboardEtu');
+            history.push('/dashboardChef');
         } catch (error) {
             if (error.response) {
                 console.log(error.response.data.msg);
@@ -80,23 +77,16 @@ const ContactStudent = () => {
             <Container className=' p-2 mt-5'  > 
             <div className=' p-2 mt-5'>
                 <h1  className="text-center text-white FontFamily">Contactez nous</h1>
-                <h2 className="text-center text-white FontFamily">Si vous avez besoin d'aide ou d'un document</h2>
+                <h2 className="text-center text-white FontFamily">Si vous avez besoin d'aide </h2>
                 
              </div>
                 <Form  onSubmit={add} method="POST" encType='multipart/form-data' className='w-100 p-3 col-md-6'>
-                    <Form.Group className="mb-3" controlId="cin">
-                        <Form.Label className=" ">CIN</Form.Label>
+                 
+                    <Form.Group className="mb-3" controlId="department">
+                        <Form.Label className=" ">Sujet</Form.Label>
                         <Form.Control
-                            value={cin}
-                            onChange={(e) => setCin(e.target.value)}
-                            type="text"
-                          />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="classe">
-                        <Form.Label className=" ">Classe</Form.Label>
-                        <Form.Control
-                            value={classe}
-                            onChange={(e) => setClasse(e.target.value)}
+                            value={department}
+                            onChange={(e) => setDepartment(e.target.value)}
                             type="text"
                             />
                     </Form.Group>
@@ -119,5 +109,4 @@ const ContactStudent = () => {
         </div>
     )
 }
-
-export default ContactStudent;
+export default ContactChef;

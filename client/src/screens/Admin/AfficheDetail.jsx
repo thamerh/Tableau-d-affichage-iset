@@ -12,7 +12,6 @@ export const AfficheDetail = () => {
 
     const [title, setTitle] = useState('')
     const [AfficheDescription, setAfficheDescription] = useState('')
-    const [published, setPublished] = useState(true)
     const [AfficheImage, setAfficheImage] = useState('')
 
 
@@ -26,7 +25,6 @@ export const AfficheDetail = () => {
 
             setTitle(data.title)
             setAfficheDescription(data.description)
-            setPublished(data.published)
             setAfficheImage(data.image)
 
          
@@ -60,9 +58,7 @@ export const AfficheDetail = () => {
                             <Card.Text>
                                 Description: {AfficheDescription}
                             </Card.Text>
-                            <Card.Text>
-                                Published: {published ? (<small>True</small>) : (<small>false</small>)}
-                            </Card.Text>
+                      
                         <br />
 
                     
