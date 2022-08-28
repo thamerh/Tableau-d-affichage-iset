@@ -42,6 +42,7 @@ const DocumentAdminCard= ({ affiche }) => {
                 <Card.Img src ={` http://localhost:5000/${affiche.image}` } style={{ height: '18rem' }}/>
                 <Card.Body>
                     <Card.Title>Title: {affiche.title}</Card.Title>
+                    <Card.Title>Student: {affiche.name}</Card.Title>
                     <Button variant="primary" onClick={(e)=>download(e)}>Telecharger</Button>
                     <Button className="btn btn-danger m-2" onClick={(e) => Delete(e)}>Delete</Button> 
                 </Card.Body>
