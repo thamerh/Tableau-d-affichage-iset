@@ -24,7 +24,6 @@ CREATE TABLE departement(
 CREATE TABLE donnes_dotorisation(
    cin VARCHAR(50),
    code_dautorisation VARCHAR(50),
-   -- nom_dep VARCHAR(50) NOT NULL,
    createdAt DATETIME NOT NULL,
    updatedAt DATETIME NOT NULL,
    PRIMARY KEY(cin, code_dautorisation)
@@ -44,8 +43,8 @@ CREATE TABLE classe(
 --
 CREATE TABLE chef_departement(
    id VARCHAR(50),
-   name VARCHAR(50),
-   email VARCHAR(50),
+   name VARCHAR(50) unique,
+   email VARCHAR(50) unique,
    password VARCHAR(255),
    refresh_token VARCHAR(255),
    createdAt DATETIME NOT NULL,
@@ -75,8 +74,8 @@ CREATE TABLE carte_etudiant(
 
 CREATE TABLE etudiants(
    id VARCHAR(50),
-   name VARCHAR(50),
-   email VARCHAR(50),
+   name VARCHAR(50) unique,
+   email VARCHAR(50) unique,
    password VARCHAR(255),
    refresh_token VARCHAR(255),
    createdAt DATETIME NOT NULL,
@@ -117,7 +116,7 @@ CREATE TABLE previlege(
 
 CREATE TABLE admin(
    id VARCHAR(50),
-   name VARCHAR(50),
+   name VARCHAR(50) unique,
    email VARCHAR(50),
    password VARCHAR(255),
    refresh_token VARCHAR(255),
@@ -136,7 +135,6 @@ CREATE TABLE admin(
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
-
 
 --
 -- Table structure for table `affiches` Admin
@@ -175,6 +173,7 @@ CREATE TABLE affichesChef(
    createdAt DATETIME NOT NULL,
    updatedAt DATETIME NOT NULL,
    PRIMARY KEY(id)
+
 );
 --
 -- AUTO_INCREMENT for table `affichesChef` 
@@ -275,3 +274,19 @@ CREATE TABLE MessageChef(
 ALTER TABLE `MessageChef`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+
+--
+-- Dumping data  code privilage for register first admin 
+--
+
+INSERT INTO `previlege` ( `cin`, `code_previlege`) VALUES ( '04000000', '11111999');
+
+
+--
+-- Dumping data `department` table 
+--
+INSERT INTO `departement` ( `nom_dep`) VALUES ( 'TI'),('GP'),('AA'),('GM'),('GE');
+--
+-- Dumping data `classe` table 
+--
+INSERT INTO `classe` ( `lib_class`,`nom_dep`) VALUES ( 'TI11','TI'),( 'DSI2','TI'),( 'DSI3','TI');
