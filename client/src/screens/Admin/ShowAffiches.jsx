@@ -10,16 +10,37 @@ import '../secreens.css';
 const ShowAffiche = () => {
     const history = useHistory();
     const [Affiche, setAffiche] = useState([])
+    const [token, setToken] = useState('');
+    const [expire, setExpire] = useState('');
 
+  const axiosJWT = axios.create();
+   
+  axiosJWT.interceptors.request.use(async (config) => {
+      const currentDate = new Date();
+      if (expire * 1000 < currentDate.getTime()) {
+          const response = await axios.get('http://localhost:5000/tokenAdmin');
+          config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+          setToken(response.data.accessToken);
+          const decoded = jwt_decode(response.data.accessToken);
+          setExpire(decoded.exp);
+      }
+      return config;
+  }, (error) => {
+      return Promise.reject(error);
+  });
     useEffect(() => {
-        const getAfficheData = async () => {
-            const { data } = await axios.get('http://localhost:5000/allAffiches')
-            console.log(data)
+        const getAfficheData= async (token) => {
+            const { data } = await axiosJWT.get('http://localhost:5000/allAffiches',{
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             setAffiche(data)
         }
     
         getAfficheData()
-    },[])
+    },[token])
+
 
     return (
         <div >
