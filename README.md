@@ -9,7 +9,6 @@ SPA (Single Page Application) qui lui permet, à son tour, de bénéficier de se
 - consultation des annonces de report des séance  
 - envoiyer et recevoir les documents nécessité …
 - communication avec l'administrateur
--  recevoir des notification en temps réel …
 - l'administrateur capable d'ajouter le privilège d'inscrit dans cette platform et le responsable de mangement utilisateur
 - l'administrateur ajouter des affiches vers tous les etudiants
 - chef departement ajouter des affiches et emplois du temps vers les etudiants inscrit dans leur department 
