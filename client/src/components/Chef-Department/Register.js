@@ -41,7 +41,7 @@ const RegisterChef = () => {
     }
 
     return (
-        <div style={ HeaderStyle }>
+        <div>
         <section className=" is-fullheight is-fullwidth" >
 
                 <div className="container height">
@@ -115,11 +115,3 @@ const RegisterChef = () => {
 }
 
 export default RegisterChef
-const HeaderStyle = {
-    width: "100%",
-    height: "100%",
-    background: `url("https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-}

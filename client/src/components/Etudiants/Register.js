@@ -9,7 +9,6 @@ const RegisterEtu = () => {
     const [cin, setCin] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
-    const [msg, setMsg] = useState('');
     const history = useHistory();
 
     const RegisterEtu = async (e) => {

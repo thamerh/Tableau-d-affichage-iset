@@ -9,7 +9,6 @@ const RegisterAdmin= () => {
     const [code_previlege, setCode_previlege] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
-    const [msg, setMsg] = useState('');
     const history = useHistory();
 
     const RegisterAdmin= async (e) => {
@@ -33,7 +32,7 @@ const RegisterAdmin= () => {
     }
 
     return (
-        <div style={ HeaderStyle }>
+        <div>
         <section className=" is-fullheight is-fullwidth" >
 
                 <div className="container height">
@@ -100,11 +99,3 @@ const RegisterAdmin= () => {
 }
 
 export default RegisterAdmin
-const HeaderStyle = {
-    width: "100%",
-    height: "100%",
-    background: `url("https://images.pexels.com/photos/633409/pexels-photo-633409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-}
