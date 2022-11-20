@@ -1,61 +1,16 @@
 import axios from 'axios'
-import React, { useState,useEffect,useLayoutEffect } from 'react'
+import React, { useState,useContext } from 'react'
 import { Container, Form, Button } from 'react-bootstrap';
-import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
-
+import {AuthContext} from '../../context/AuthContext';
 const AddDocumentStudent = () => {
-
-    const [name, setName] = useState('');
-    const [token, setToken] = useState('');
-    const [expire, setExpire] = useState('');
+    const {StudentName} = useContext(AuthContext);
     const [title, setTitle] = useState('')
     const [image, setImage] = useState('')
     
 
     const history = useHistory();
 
-
-  
-    useEffect(() => {
-        refreshToken();
-       
-      }, []);
-     
-
-      const refreshToken = async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/tokenEtu');
-            setToken(response.data.accessToken);
-            const decoded = jwt_decode(response.data.accessToken);
-            setName(decoded.name);
-            setExpire(decoded.exp);
-            
-        } catch (error) {
-            if (error.response) {
-                history.push("/LoginEtu");
-            }
-        }
-       
-    }
-    
-    const axiosJWT = axios.create();
-  
-    axiosJWT.interceptors.request.use(async (config) => {
-        const currentDate = new Date();
-        if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:5000/tokenEtu');
-            config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-            setToken(response.data.accessToken);
-            const decoded = jwt_decode(response.data.accessToken);
-            setName(decoded.name);
-            setExpire(decoded.exp);
-           
-        }
-        return config;
-    }, (error) => {
-        return Promise.reject(error);
-    });
     const add = async (e) => {
         e.preventDefault();
      
@@ -67,7 +22,7 @@ const AddDocumentStudent = () => {
          
             formData.append('image', image)
             formData.append('title', title)
-            formData.append('name', name)
+            formData.append('name', StudentName)
             await axios.post('http://localhost:5000/addDocumentStudent', formData)
             alert("document envoyer avec succès ")
             history.push('/dashboardEtu');
@@ -104,7 +59,7 @@ const AddDocumentStudent = () => {
                     <Form.Group className="mb-3" controlId="classe">
                         <Form.Label className=" ">name</Form.Label>
                         <Form.Control
-                            value={name}
+                            value={StudentName}
                             type="text"
                             />
                     </Form.Group>

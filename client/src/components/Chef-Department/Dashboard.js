@@ -1,18 +1,11 @@
-import React, {useEffect,useContext} from 'react'
+import React  from 'react'
 import Sidebar from "./SideBar";
 import Navbar from "./NavBar";
 import '../Admin/Dashboard.css'
 import ShowEmploi  from '../../screens/Chef-dep/ShowEmplois'
 import ShowAffiche from '../../screens/Chef-dep/ShowAffiches'
 import './Chef-style.css'
-import {AuthContext} from '../../context/AuthContext';
 export const  DashboardChef= () => {
-    const {ChefIsLogin} = useContext(AuthContext);
-
-
-    useEffect(() => {
-      ChefIsLogin();
-    }, []);
   return ( 
     <div className="dashboard d-flex">
     	<div>

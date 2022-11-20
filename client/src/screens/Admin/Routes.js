@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React, { useState,useContext,useEffect,Fragment } from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
-
+import {AuthContext} from '../../context/AuthContext';
 import DashboardAdmin from "../../components/Admin/Dashboard";
 import Navbar from "../../components/Admin/NavBar";
 import {AddAnotherAdmin} from './AddCodeAdmin'
@@ -15,14 +15,16 @@ import ShowAffiche  from "./ShowAffiches";
 import UserList from "./UserManegment"
 import EditUser from "./EditChefUser"
 import EditStudentUser from "./EditStudentUser"
-
 const Routes = () => {
-
+  const {AdminIsLogin} = useContext(AuthContext);
+  useEffect(() => {
+    AdminIsLogin();
+  }, []);
   return (
     <Fragment>
-      <BrowserRouter>
+        <BrowserRouter>
         <Route exact path="/dashboardAdmin" render={() => <DashboardAdmin/> } />
-        <Route path="/AddDocumentAdmin"><Navbar/><AddDocumentAdmin/></Route>
+        <Route path="/AddDocumentAdmin"   ><Navbar/><AddDocumentAdmin/></Route>
         <Route path="/addAffiche"><Navbar/><AddAffiche/></Route>
         <Route path="/Affiches" component={ShowAffiche} />
         <Route path="/AddAdmin"><Navbar/><AddAnotherAdmin/></Route>

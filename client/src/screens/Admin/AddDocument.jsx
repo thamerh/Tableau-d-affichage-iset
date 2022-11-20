@@ -5,9 +5,6 @@ import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
 
 const AddDocumentAdmin = () => {
-
-    const [name, setName] = useState('');
-    const [token, setToken] = useState('');
     const [expire, setExpire] = useState('');
     const [title, setTitle] = useState('');
     const [image, setImage] = useState('');
@@ -15,44 +12,6 @@ const AddDocumentAdmin = () => {
 
     const history = useHistory();
 
-
-  
-    useEffect(() => {
-        refreshToken();
-       
-      }, []);
-     
-
-      const refreshToken = async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/tokenAdmin');
-            setToken(response.data.accessToken);
-            const decoded = jwt_decode(response.data.accessToken);
-            setName(decoded.name);
-            setExpire(decoded.exp);
-        } catch (error) {
-            if (error.response) {
-                history.push("/loginAdmin");
-            }
-        }
-    }
-
-    const axiosJWT = axios.create();
-
-    axiosJWT.interceptors.request.use(async (config) => {
-        const currentDate = new Date();
-        if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:5000/tokenAdmin');
-            config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-            setToken(response.data.accessToken);
-            const decoded = jwt_decode(response.data.accessToken);
-            setName(decoded.name);
-            setExpire(decoded.exp);
-        }
-        return config;
-    }, (error) => {
-        return Promise.reject(error);
-    });
     const add = async (e) => {
         e.preventDefault();
      

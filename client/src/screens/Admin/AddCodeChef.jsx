@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react';
 import axios from 'axios';
-import { useHistory,Link } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 export  const AddChef = () => {
     const [cin, setCin] = useState('');
     const [code_dautorisation, setCodeDautorisation] = useState('');
-    const [msg, setMsg] = useState('');
     const history = useHistory();
 
     const Auth = async (e) => {

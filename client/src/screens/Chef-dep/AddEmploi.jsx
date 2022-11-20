@@ -1,70 +1,21 @@
 import axios from 'axios'
-import React, { useState,useEffect,useLayoutEffect } from 'react'
+import React, { useState,useEffect,useContext } from 'react'
 import { Container, Form, Button } from 'react-bootstrap';
-import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
-
+import { AuthContext } from '../../context/AuthContext';
 const AddEmploii = () => {
-
-    const [name, setName] = useState('');
-    const [token, setToken] = useState('');
-    const [expire, setExpire] = useState('');
+    const {chefName} = useContext(AuthContext);
     const [nom_dep, setNomDep] = useState('');
-    
-
     const history = useHistory();
-
-
-  
-    useEffect(() => {
-        refreshToken();
+    // useEffect(() => {
+    //     ChefIsLogin();
        
-      }, []);
+    //   }, []);
       useEffect(() => {
 
-        getNomDepByNameChef(name) ;
-      }, [name]);
-
-
-    const refreshToken = async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/tokenChef');
-            setToken(response.data.accessToken);
-            const decoded = jwt_decode(response.data.accessToken);
-            setName(decoded.name);
-            setExpire(decoded.exp);
-            
-        } catch (error) {
-            if (error.response) {
-                history.push("/LoginChef");
-            }
-        }
-       
-    }
-    
-    const axiosJWT = axios.create();
-
-    axiosJWT.interceptors.request.use(async (config) => {
-        const currentDate = new Date();
-        if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:5000/tokenChef');
-            config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-            setToken(response.data.accessToken);
-            const decoded = jwt_decode(response.data.accessToken);
-            setName(decoded.name);
-            setExpire(decoded.exp);
-           
-        }
-        return config;
-    }, (error) => {
-        return Promise.reject(error);
-    });
-
-
-
-
-
-const getNomDepByNameChef = async (name) => {
+        getNomDepByNameChef(chefName) ;
+      }, [chefName]);
+    const getNomDepByNameChef = async (name) => {
 
       
                 await axios.get(`http://localhost:5000/getNomDep/${name}`).then((response)=>{
