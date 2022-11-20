@@ -1,5 +1,5 @@
 import React from "react";
-import { CDBNavbar, CDBInput } from "cdbreact";
+import { CDBNavbar} from "cdbreact";
 import { Header } from "../Admin/Navbar.Style";
 
 const Navbar = () => {

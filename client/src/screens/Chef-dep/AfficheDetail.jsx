@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Card, Button, Container, Form, Row, Col} from 'react-bootstrap'
+import {Card, Button, Container,Row, Col} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useHistory, useParams } from 'react-router'
 import axios from 'axios'
@@ -12,7 +12,6 @@ const AfficheDetail = () => {
 
     const [title, setTitle] = useState('')
     const [AfficheDescription, setAfficheDescription] = useState('')
-    const [published, setPublished] = useState(true)
     const [AfficheImage, setAfficheImage] = useState('')
 
 
@@ -26,7 +25,6 @@ const AfficheDetail = () => {
 
             setTitle(data.title)
             setAfficheDescription(data.description)
-            setPublished(data.published)
             setAfficheImage(data.image)
 
          

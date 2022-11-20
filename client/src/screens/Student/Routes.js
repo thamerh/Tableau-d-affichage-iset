@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment,useContext,useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import DashboardEtu from '../../components/Etudiants/Dashboard';
 import Navbar from "../../components/Etudiants/Navbar";
@@ -7,8 +7,14 @@ import AfficheDetailStudent from "./AfficheDetail";
 import ContactStudent from "./Contact";
 import DocumentStudent from "./DocumentStudent";
 import  EmploiDetailStudent from "./EmploiDetail";
+import {AuthContext} from '../../context/AuthContext';
 const RouteStudent = () => {
 
+  const {StudentIsLogin} = useContext(AuthContext);
+
+  useEffect(() => {
+    StudentIsLogin();
+  }, []);
   return (
     <Fragment>
       <BrowserRouter>

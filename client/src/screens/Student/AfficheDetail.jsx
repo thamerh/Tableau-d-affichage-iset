@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import {Card, Button, Container, Form, Row, Col} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { useHistory, useParams } from 'react-router'
+import {Card, Container, Form, Row, Col} from 'react-bootstrap'
+import {useParams } from 'react-router'
 import axios from 'axios'
 
 
 const AfficheDetailStudent= () => {
 
     const {id}  = useParams()
-    const history = useHistory()
-
     const [title, setTitle] = useState('')
     const [AfficheDescription, setAfficheDescription] = useState('')
     const [AfficheImage, setAfficheImage] = useState('')
-    const [test, setTest] = useState('')
 
 
    

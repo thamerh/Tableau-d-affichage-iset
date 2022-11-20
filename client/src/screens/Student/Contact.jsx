@@ -1,66 +1,26 @@
 import axios from 'axios'
-import React, { useState,useEffect,useLayoutEffect } from 'react'
+import React, { useState,useContext} from 'react'
 import { Container, Form, Button } from 'react-bootstrap';
-import jwt_decode from "jwt-decode";
 import { useHistory } from 'react-router-dom';
-
+import {AuthContext} from '../../context/AuthContext';
 const ContactStudent = () => {
-
-    const [name, setName] = useState('');
-    const [token, setToken] = useState('');
-    const [expire, setExpire] = useState('');
+    const {StudentName} = useContext(AuthContext);
     const [cin, setCin] = useState('')
     const [message, setMessage] = useState('')
     const [classe, setClasse] = useState('')
     const history = useHistory();  
-    useEffect(() => {
-        refreshToken();
-       
-      }, []);
-    const refreshToken = async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/tokenEtu');
-            setToken(response.data.accessToken);
-            const decoded = jwt_decode(response.data.accessToken);
-            setName(decoded.name);
-            setExpire(decoded.exp);
-            
-        } catch (error) {
-            if (error.response) {
-                history.push("/LoginEtu");
-            }
-        }
-       
-    }
     
-    const axiosJWT = axios.create();
-  
-    axiosJWT.interceptors.request.use(async (config) => {
-        const currentDate = new Date();
-        if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:5000/tokenEtu');
-            config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-            setToken(response.data.accessToken);
-            const decoded = jwt_decode(response.data.accessToken);
-            setName(decoded.name);
-            setExpire(decoded.exp);
-           
-        }
-        return config;
-    }, (error) => {
-        return Promise.reject(error);
-    });
     const add = async (e) => {
         e.preventDefault();
      
 
         try {
-         console.log(name);
+         console.log(StudentName);
          console.log(cin);
          console.log(message)
          console.log(classe)
          const data={
-                "name":name,
+                "name":StudentName,
                 "cin":cin,
                 "message":message,
                 "classe":classe

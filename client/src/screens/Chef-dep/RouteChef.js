@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment,useEffect,useContext } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-
+import { AuthContext } from '../../context/AuthContext';
 import DashboardChef from "../../components/Chef-Department/Dashboard";
 import Navbar from "../../components/Chef-Department/NavBar";
 import ShowAffiches from './ShowAffiches'
@@ -14,7 +14,10 @@ import ShowEmploi from './ShowEmplois'
 import ContactChef from './Contact'
 
 const Routeschef = () => {
-
+  const {ChefIsLogin} = useContext(AuthContext);
+  useEffect(() => {
+    ChefIsLogin();
+}, []);
   return (
     <Fragment>
       <BrowserRouter>

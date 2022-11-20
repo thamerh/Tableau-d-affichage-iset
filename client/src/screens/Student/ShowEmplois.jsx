@@ -1,67 +1,17 @@
-import React, { useState, useEffect , useCallback} from 'react'
+import React, { useState, useEffect , useContext} from 'react'
 import axios from 'axios';
-import {Container,Button, Row, Col} from 'react-bootstrap'
+import {Container, Row, Col} from 'react-bootstrap'
 import EmploiCardStudent from '../../components/EmploiStudentCard';
-import jwt_decode from "jwt-decode";
-import { useHistory } from 'react-router-dom';
 import '../secreens.css';
-
+import {AuthContext} from '../../context/AuthContext';
 const ShowEmploiStudent = () => {
-    const history = useHistory();
+    const {StudentName} = useContext(AuthContext);
     const [Affiche, setAffiches] = useState([])
-    const [name, setName] = useState('');
-    const [token, setToken] = useState('');
-    const [expire, setExpire] = useState('');
-
-
-    
-
-
-    useEffect(() => {
-        refreshToken();
-      }, []);
-      useEffect(() => {
-        getEmploiStudent(name) ;
-      }, [name]);
    
-    const refreshToken = async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/tokenEtu');
-            setToken(response.data.accessToken);
-            const decoded = jwt_decode(response.data.accessToken);
-            setName(decoded.name);
-            setExpire(decoded.exp);
-            
-        } catch (error) {
-            if (error.response) {
-                history.push("/LoginEtu");
-            }
-        }
-       
-    }
-    
-    const axiosJWT = axios.create();
-
-    axiosJWT.interceptors.request.use(async (config) => {
-        const currentDate = new Date();
-        if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:5000/tokenEtu');
-            config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-            setToken(response.data.accessToken);
-            const decoded = jwt_decode(response.data.accessToken);
-            setName(decoded.name);
-            setExpire(decoded.exp);
-           
-        }
-        return config;
-    }, (error) => {
-        return Promise.reject(error);
-    });
-
-
-
-
-
+      useEffect(() => {
+        getEmploiStudent(StudentName) ;
+      }, [StudentName]);
+   
 async function getEmploiStudent (name) {
 
       

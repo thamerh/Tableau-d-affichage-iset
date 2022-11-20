@@ -3,12 +3,10 @@ import axios from 'axios';
 import {Container,Button, Row, Col} from 'react-bootstrap'
 import AfficheCard from '../../components/AfficheCard';
 import jwt_decode from "jwt-decode";
-import { useHistory } from 'react-router-dom';
 import '../secreens.css';
 
 
 const ShowAffiche = () => {
-    const history = useHistory();
     const [Affiche, setAffiche] = useState([])
     const [token, setToken] = useState('');
     const [expire, setExpire] = useState('');
