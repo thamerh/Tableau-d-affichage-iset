@@ -11,12 +11,12 @@ import RegisterAdmin from "./components/Admin/Register";
 import Routes from './screens/Admin/Routes';
 import RoutesChef from './screens/Chef-dep/RouteChef';
 import RouteStudent from './screens/Student/Routes';
-
+import {AuthProvider} from './context/AuthContext'
 
 function App() {
   return (
-    
-    <BrowserRouter>
+<AuthProvider>
+<BrowserRouter>
     <Switch>
       <Route exact path="/">
       <LandingPage/>
@@ -50,6 +50,9 @@ function App() {
       </Route>  
     </Switch>
   </BrowserRouter>
+</AuthProvider>
+    
+   
 
    
   );
