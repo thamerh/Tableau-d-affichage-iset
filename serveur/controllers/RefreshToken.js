@@ -21,7 +21,7 @@ export const refreshTokenEtu = async(req, res) => {
             const accessToken = jwt.sign({userId, name, email}, process.env.ACCESS_TOKEN_SECRET,{
                 expiresIn: '15s'
             });
-            res.json({ accessToken });
+            res.json({ accessToken,name});
         });
     } catch (error) {
         console.log(error);
@@ -46,7 +46,7 @@ export const refreshTokenChef = async(req, res) => {
             const accessToken = jwt.sign({userId, name, email}, process.env.ACCESS_TOKEN_SECRET,{
                 expiresIn: '15s'
             });
-            res.json({ accessToken });
+            res.json({ accessToken ,name });
         });
     } catch (error) {
         console.log(error);
@@ -71,7 +71,7 @@ export const refreshTokenAdmin = async(req, res) => {
             const accessToken = jwt.sign({userId, name, email}, process.env.ACCESS_TOKEN_SECRET,{
                 expiresIn: '15s'
             });
-            res.json({ accessToken });
+            res.json({ accessToken,name });
         });
     } catch (error) {
         console.log(error);
